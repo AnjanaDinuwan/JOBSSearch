@@ -9,19 +9,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-
-class SeekerHome : AppCompatActivity() {
+class JobPosting : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_seeker_home)
+        setContentView(R.layout.activity_job_posting)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.RVJobsSeeker)
+        val recyclerView = findViewById<RecyclerView>(R.id.RVEmployeesApplied)
         val tList = ArrayList<Int>()
         tList.add(1)
         tList.add(2)
         tList.add(3)
         tList.add(4)
-        val jobAdapter = JobAdapter(this, tList)
+        val jobAdapter = SeekerHome.JobAdapter(this, tList)
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = jobAdapter
@@ -38,7 +37,7 @@ class SeekerHome : AppCompatActivity() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.job_card_layout, parent, false)
+                .inflate(R.layout.seeker_card_layout, parent, false)
 
             return ViewHolder(view)
         }

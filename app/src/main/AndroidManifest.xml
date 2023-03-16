@@ -12,10 +12,16 @@
         android:theme="@style/Theme.JOBSSearch"
         tools:targetApi="31">
         <activity
+            android:name=".JobPosting"
+            android:exported="false" />
+        <activity
             android:name=".publish_jobs"
             android:exported="false" />
         <activity
             android:name=".seeker_registration"
+            android:exported="false" />
+        <activity
+            android:name=".ProviderHome"
             android:exported="false" />
         <activity
             android:name=".SeekerHome"
@@ -31,7 +37,7 @@
             android:name=".ui.login.SignIn"
             android:exported="true"
             android:label="@string/title_activity_sign_in"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true" />
