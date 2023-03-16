@@ -15,24 +15,16 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView2"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Search jobs..."
-            android:layout_marginBottom="16dp"/>
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Recommended Jobs"
+            android:text="Job Postings"
             android:layout_marginBottom="10dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/RVJobsSeeker"
+            android:id="@+id/RVJobsProvider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
@@ -45,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_nav_menu"/>
+        app:menu="@menu/bottom_nav_menu_provider"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

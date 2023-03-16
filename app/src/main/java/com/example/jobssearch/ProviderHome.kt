@@ -9,19 +9,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-
-class SeekerHome : AppCompatActivity() {
+class ProviderHome : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_seeker_home)
+        setContentView(R.layout.activity_provider_home)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.RVJobsSeeker`)
+        val recyclerView = findViewById<RecyclerView>(R.id.RVJobsProvider)
         val tList = ArrayList<Int>()
         tList.add(1)
         tList.add(2)
         tList.add(3)
         tList.add(4)
-        val jobAdapter = JobAdapter(this, tList)
+        val jobAdapter = SeekerHome.JobAdapter(this, tList)
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = jobAdapter
