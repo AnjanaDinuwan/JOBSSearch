@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/gradient1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        tools:ignore="MissingConstraints"
+        android:background="#65BEED"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="100dp">
+
+        <ImageView
+            android:id="@+id/notification_image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/notifications_svg_square" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/notification_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Get the latest jobs!"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/notification_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Be the first to know about Google jobs in USA" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        tools:ignore="MissingConstraints"
+        android:background="#65BEED"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="195dp">
+
+        <ImageView
+            android:id="@+id/notification_image2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/notifications_svg_square" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/notification_title2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Get the latest jobs!"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/notification_message2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Be the first to know about Apple jobs in USA" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        tools:ignore="MissingConstraints"
+        android:background="#65BEED"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="291dp">
+
+        <ImageView
+            android:id="@+id/notification_image3"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/notifications_svg_square" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/notification_title3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notification Title"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/notification_message3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notification Message" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        tools:ignore="MissingConstraints"
+        android:background="#65BEED"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="388dp">
+
+        <ImageView
+            android:id="@+id/notification_image4"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/notifications_svg_square" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/notification_title4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notification Title"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/notification_message4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notification Message" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        tools:ignore="MissingConstraints"
+        android:background="#65BEED"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="486dp">
+
+        <ImageView
+            android:id="@+id/notification_image5"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/notifications_svg_square" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/notification_title5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notification Title"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/notification_message5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notification Message" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="582dp"
+        android:background="#65BEED">
+
+        <ImageView
+            android:id="@+id/notification_image6"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/notifications_svg_square" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/notification_title6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notification Title"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/notification_message6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notification Message" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="155dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="29dp"
+        android:text="Notifications"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="60dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/button_gradient"
+        android:text="Edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

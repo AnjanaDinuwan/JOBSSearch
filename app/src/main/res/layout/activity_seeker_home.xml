@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient1"
     tools:context=".SeekerHome"
     android:orientation="vertical">
 
@@ -24,12 +25,20 @@
             android:hint="Search jobs..."
             android:layout_marginBottom="16dp"/>
 
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="146dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_gradient"
+            android:layout_marginBottom="10dp"
+            android:text="Add" />
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Recommended Jobs"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:text="Recommended Jobs" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/RVJobsSeeker"

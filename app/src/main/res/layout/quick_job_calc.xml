@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/gradient1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="335dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="136dp"
+        android:text="Quick Job Title"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.21"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/titleEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Job Title"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/titleTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/titleTextView"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+
+    <TextView
+        android:id="@+id/rateTextView"
+        android:layout_width="258dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="20dp"
+        android:text="Rate per (hour/day/workload)"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.104"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleEditText" />
+
+    <EditText
+        android:id="@+id/rateEditText"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:hint="Enter rate in LKR"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="@+id/rateTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/rateTextView"
+        app:layout_constraintTop_toBottomOf="@+id/rateTextView" />
+
+    <TextView
+        android:id="@+id/jobProviderTextView"
+        android:layout_width="374dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="44dp"
+        android:text="Job Provider Name"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rateEditText" />
+
+    <EditText
+        android:id="@+id/jobProviderEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:hint="Enter your job provider"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/jobProviderTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/jobProviderTextView"
+        app:layout_constraintTop_toBottomOf="@+id/jobProviderTextView" />
+
+    <TextView
+        android:id="@+id/daysTextView"
+        android:layout_width="73dp"
+        android:layout_height="28dp"
+        android:text="Days"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="456dp" />
+
+    <TextView
+        android:id="@+id/daysTextView2"
+        android:layout_width="73dp"
+        android:layout_height="28dp"
+        android:text="Cost"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.573"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="454dp" />
+
+    <EditText
+        android:id="@+id/jobProviderEditTextDays"
+        android:layout_width="141dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="120dp"
+        android:ems="10"
+        android:hint="Enter total days"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/jobProviderTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/jobProviderTextView"
+        app:layout_constraintTop_toBottomOf="@+id/jobProviderTextView" />
+
+    <EditText
+        android:id="@+id/jobProviderEditTextDays2"
+        android:layout_width="180dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="120dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/jobProviderTextView"
+        app:layout_constraintHorizontal_bias="0.917"
+        app:layout_constraintStart_toStartOf="@+id/jobProviderTextView"
+        app:layout_constraintTop_toBottomOf="@+id/jobProviderTextView" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="146dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="146dp"
+        android:text="Quick Jobs"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/hireButton"
+        android:layout_width="145dp"
+        android:layout_height="40dp"
+        android:background="@drawable/button_gradient"
+        android:text="Hire"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="575dp" />
+
+    <Button
+        android:id="@+id/contactButton"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:background="@drawable/button_gradient_white"
+        android:text="Contact"
+        tools:layout_editor_absoluteX="211dp"
+        tools:layout_editor_absoluteY="575dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
