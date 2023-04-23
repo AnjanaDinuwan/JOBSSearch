@@ -10,35 +10,36 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="207dp"
+        android:layout_width="wrap_content"
         android:layout_height="35dp"
+        android:layout_marginTop="40dp"
         android:breakStrategy="high_quality"
         android:capitalize="none"
         android:fontFamily="sans-serif-black"
         android:text="Seeker Registration"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="45dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Full Name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="64dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="407dp"
-        android:layout_height="44dp"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
@@ -48,8 +49,9 @@
 
     <EditText
         android:id="@+id/editTextPhone3"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="45dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="Conatct No"
         android:inputType="phone"
@@ -59,7 +61,7 @@
 
     <EditText
         android:id="@+id/editTextTextPassword"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="45dp"
         android:ems="10"
         android:hint="Password"
@@ -70,9 +72,8 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
-        android:layout_width="409dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
         android:ems="10"
         android:hint="Confirm Password"
         android:inputType="textPersonName"
@@ -82,13 +83,13 @@
 
     <EditText
         android:id="@+id/editTextTextPostalAddress"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="45dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Postal Address"
         android:inputType="textPostalAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 
@@ -96,9 +97,9 @@
         android:id="@+id/imageButton"
         android:layout_width="54dp"
         android:layout_height="53dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="136dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress"
         app:srcCompat="@android:drawable/ic_menu_upload" />
@@ -107,12 +108,12 @@
         android:id="@+id/button3"
         android:layout_width="210dp"
         android:layout_height="43dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/button_gradient_white"
         android:text="Upload Profile Photo"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton" />
 
@@ -120,35 +121,34 @@
         android:id="@+id/imageButton2"
         android:layout_width="61dp"
         android:layout_height="52dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress"
         app:srcCompat="@android:drawable/ic_menu_upload" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="119dp"
         android:layout_height="43dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/button_gradient_white"
         android:text="Upload CV"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
-        app:layout_constraintVertical_bias="0.179" />
+        app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="116dp"
-        android:layout_height="44dp"
+        android:layout_width="123dp"
+        android:layout_height="47dp"
         android:background="@drawable/button_gradient"
         android:text="Register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

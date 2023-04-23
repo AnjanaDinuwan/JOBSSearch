@@ -14,31 +14,23 @@
         android:orientation="vertical"
         android:padding="16dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView2"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp">
 
-        <EditText
-            android:id="@+id/editTextTextPersonName"
+        <SearchView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Search jobs..."
-            android:layout_marginBottom="16dp"/>
+            android:overScrollMode="always"
+            android:queryHint="Search Vacancies" />
 
         <Button
             android:id="@+id/button7"
             android:layout_width="146dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/button_gradient"
-            android:layout_marginBottom="10dp"
-            android:text="Add" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="Recommended Jobs" />
+            android:text="Add new Vacancy" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/RVJobsSeeker"
