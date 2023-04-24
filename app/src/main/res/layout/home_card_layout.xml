@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp"
+    app:cardMaxElevation="10dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="144dp"
+        android:background="@color/material_dynamic_neutral60"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/t1"
+            android:layout_width="217dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="A&amp;D construction services"
+            android:textColor="#fff"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/t1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="32dp"
+            android:text="Jobs (71)"
+            android:textColor="#fff" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/t1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="7dp"
+            android:text="House painting"
+            android:textColor="#fff" />
+
+        <ImageView
+            android:layout_width="117dp"
+            android:layout_height="120dp"
+            android:layout_alignParentRight="true"
+            android:maxHeight="100dp"
+            android:src="@drawable/_f4f4596_37ce_4fe1_9a6a_cbae362da603_1602032164729" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
