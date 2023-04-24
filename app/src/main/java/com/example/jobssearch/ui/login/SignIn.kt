@@ -10,6 +10,8 @@ import com.example.jobssearch.MainActivity
 
 import com.example.jobssearch.R
 import com.example.jobssearch.data.ExampleDataSource
+import com.example.jobssearch.provider_registration
+import com.example.jobssearch.seeker_registration
 
 class SignIn : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +23,28 @@ class SignIn : AppCompatActivity() {
         signInButton!!.setOnClickListener {
             signIn();
         }
+
+        val guestButton = findViewById<Button>(R.id.button10)
+        guestButton.setOnClickListener {
+            val intent = Intent(this, MainActivity:: class.java)
+            startActivity(intent)
+
+        }
+
+        val seekerButton = findViewById<Button>(R.id.btn_seeker_registration)
+        seekerButton.setOnClickListener {
+            val intent = Intent(this, seeker_registration:: class.java)
+            startActivity(intent)
+
+        }
+
+        val providerButton = findViewById<Button>(R.id.btn_provider_registration)
+        providerButton.setOnClickListener {
+            val intent = Intent(this, provider_registration:: class.java)
+            startActivity(intent)
+
+        }
+
 
     }
 
@@ -37,14 +61,14 @@ class SignIn : AppCompatActivity() {
                 "Sign in success", Toast.LENGTH_SHORT).show()
             usernameTextView.text = ""
             passwordTextView.text = ""
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
         else {
             Toast.makeText(this@SignIn,
                 "Sign In failed", Toast.LENGTH_SHORT).show()
         }
 
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
     }
 
 }

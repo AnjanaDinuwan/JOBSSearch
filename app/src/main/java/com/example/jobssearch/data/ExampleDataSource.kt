@@ -9,7 +9,9 @@ object ExampleDataSource {
 
     var seekers : MutableList<Seeker> = mutableListOf(
         Seeker("Anjana Munasinghe", "Anjana",
-            "password", "anjana@gmail.com")
+            "password", "anjana@gmail.com"),
+        Seeker("Pasan Munasinghe", "Pasan",
+            "password", "pasan@gmail.com")
     )
 
     fun validateSignIn(username: String, password:String): Boolean {
