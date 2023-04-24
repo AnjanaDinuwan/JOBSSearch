@@ -37,7 +37,7 @@ class ProviderHome : AppCompatActivity() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.job_card_layout, parent, false)
+                .inflate(R.layout.company_card_layout, parent, false)
 
             return ViewHolder(view)
         }

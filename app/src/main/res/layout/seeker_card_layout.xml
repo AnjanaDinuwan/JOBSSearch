@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    app:cardBackgroundColor="@color/white"
+    app:cardBackgroundColor="@color/background_color"
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp"
     app:cardMaxElevation="10dp"
@@ -19,18 +19,19 @@
         will add padding in API v21+ as well to have the same measurements with previous versions -->
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="150dp">
 
         <!-- ImageVIew to display our Course Image -->
         <ImageView
             android:id="@+id/idIVCourseImage"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="10dp"
+            android:layout_width="122dp"
+            android:layout_height="143dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="9dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
             android:contentDescription="@string/app_name"
             android:padding="5dp"
             app:srcCompat="@drawable/ic_baseline_person_24" />
@@ -59,6 +60,28 @@
             android:layout_marginTop="20dp"
             android:layout_toEndOf="@id/idIVCourseImage"
             android:drawablePadding="2dp"
-            android:text="Seeker description" />
+            android:text="Position" />
+
+        <Button
+            android:id="@+id/button14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="148dp"
+            android:layout_marginBottom="17dp"
+            android:text="View CV" />
+
+        <Button
+            android:id="@+id/button15"
+            android:layout_width="97dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginBottom="17dp"
+            android:layout_toEndOf="@+id/button14"
+            android:text="Contact" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
