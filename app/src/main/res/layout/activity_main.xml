@@ -34,65 +34,61 @@
     <!--    </com.google.android.material.bottomappbar.BottomAppBar>-->
 
     <Button
-        android:id="@+id/button19"
-        android:layout_width="411dp"
-        android:layout_height="47dp"
+        android:id="@+id/button24"
+        android:layout_width="157dp"
+        android:layout_height="129dp"
         android:background="@drawable/button_gradient_white"
         android:backgroundTint="#5F73D6"
-        android:text="Seekers"
-        android:textColor="@color/black"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="390dp" />
-
-    <Button
-        android:id="@+id/button18"
-        android:layout_width="411dp"
-        android:layout_height="47dp"
-        android:background="@drawable/button_gradient_white"
-        android:backgroundTint="#5F73D6"
-        android:text="Companies"
-        android:textColor="@color/black"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="308dp" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="411dp"
-        android:layout_height="47dp"
-        android:background="@drawable/button_gradient_white"
-        android:backgroundTint="#5F73D6"
+        android:contextClickable="false"
         android:text="Quick Jobs"
         android:textColor="@color/black"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="464dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="409dp" />
+
+    <Button
+        android:id="@+id/button23"
+        android:layout_width="157dp"
+        android:layout_height="129dp"
+        android:background="@drawable/button_gradient_white"
+        android:backgroundTint="#5F73D6"
+        android:contextClickable="false"
+        android:text="Seekers"
+        android:textColor="@color/black"
+        tools:layout_editor_absoluteX="220dp"
+        tools:layout_editor_absoluteY="278dp" />
+
+    <Button
+        android:id="@+id/button20"
+        android:layout_width="112dp"
+        android:layout_height="95dp"
+        android:background="@drawable/button_gradient_white"
+        android:backgroundTint="#5F73D6"
+        android:contextClickable="false"
+        android:text="Companies"
+        android:textColor="@color/black"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="91dp" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="142dp"
         android:layout_height="58dp"
+        android:layout_marginStart="28dp"
         android:text="Hello \nLogged User"
         android:textSize="24sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="67dp"
         android:layout_height="70dp"
-        app:srcCompat="@drawable/ic_image_picker"
-        tools:layout_editor_absoluteX="315dp"
-        tools:layout_editor_absoluteY="4dp" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="380dp"
-        android:layout_height="168dp"
-        android:background="#2C4E6A"
-        app:srcCompat="@drawable/home_banner"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="86dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.831"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_image_picker" />
 
     <TextView
         android:id="@+id/textView18"
