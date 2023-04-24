@@ -1,10 +1,12 @@
 package com.example.jobssearch.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.example.jobssearch.MainActivity
 
 import com.example.jobssearch.R
 import com.example.jobssearch.data.ExampleDataSource
@@ -40,6 +42,9 @@ class SignIn : AppCompatActivity() {
             Toast.makeText(this@SignIn,
                 "Sign In failed", Toast.LENGTH_SHORT).show()
         }
+
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
 }
