@@ -18,19 +18,24 @@
         app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="0dp">
 
-
-        <TextView
-            android:id="@+id/textView"
+        <SearchView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:overScrollMode="always"
+            android:queryHint="Search Vacancies" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="146dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="Companies"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+            android:background="@drawable/button_gradient"
+            android:text="Add new Vacancy" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/RVJobsProvider"
-            android:layout_width="388dp"
-            android:layout_height="541dp"
+            android:id="@+id/RVJobsSeeker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -41,8 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-
-        app:menu="@menu/bottom_nav_menu_provider"/>
+        app:menu="@menu/bottom_nav_menu"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
