@@ -31,12 +31,41 @@
             android:text="@string/quick_job_topic"
             android:textColor="#272727"
             android:textStyle="bold" />
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/button_gradient_white"
+            android:backgroundTint="#86375FBF"
+            android:text="Add Services"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.567"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_signin" />
+
+        <Button
+            android:id="@+id/button16"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/button_gradient_white"
+            android:backgroundTint="#D59D9D"
+            android:text="Hire Service"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.567"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_signin" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -87,58 +116,6 @@
                     android:src="@drawable/_f4f4596_37ce_4fe1_9a6a_cbae362da603_1602032164729" />
 
             </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_marginTop="20dp"
-            app:cardCornerRadius="15dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/card_gradient"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/t2"
-                    android:layout_width="210dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Fair Deals 24HRS"
-                    android:textColor="#fff"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/t2"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="32dp"
-                    android:text="Jobs (87)"
-                    android:textColor="#fff" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/t2"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="3dp"
-                    android:text="House/Office Cleaning"
-                    android:textColor="#fff" />
-
-                <ImageView
-                    android:layout_width="117dp"
-                    android:layout_height="123dp"
-                    android:layout_alignParentRight="true"
-                    android:maxHeight="100dp"
-                    android:src="@drawable/fair_deals" />
-
-            </RelativeLayout>
-
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -189,58 +166,6 @@
                     android:src="@drawable/ljr_wood" />
 
             </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_marginTop="20dp"
-            app:cardCornerRadius="15dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/card_gradient"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/t4"
-                    android:layout_width="217dp"
-                    android:layout_height="64dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Headbas Maintenance Serv:"
-                    android:textColor="#fff"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/t4"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="32dp"
-                    android:text="Jobs (71)"
-                    android:textColor="#fff" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/t4"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="3dp"
-                    android:text="Plumbing"
-                    android:textColor="#fff" />
-
-                <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="100dp"
-                    android:layout_alignParentRight="true"
-                    android:maxHeight="100dp"
-                    android:src="@drawable/headbas" />
-
-            </RelativeLayout>
-
         </androidx.cardview.widget.CardView>
 
 
