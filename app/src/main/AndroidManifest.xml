@@ -17,13 +17,15 @@
             android:exported="false" />
 
         <activity
-            android:name=".seeker_registration"
-            android:exported="true" >
+            android:name=".SeekerRegistration"
+            android:exported="true"
+            android:theme="@style/Theme.JOBSSearch" >
         </activity>
 
         <activity
-            android:name=".provider_registration"
-            android:exported="true" >
+            android:name=".ProviderRegistration"
+            android:exported="true"
+            android:theme="@style/Theme.JOBSSearch" >
         </activity>
 
         <activity
