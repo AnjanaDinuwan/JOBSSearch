@@ -4,43 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#64CFFF"
-    android:backgroundTint="#64CFFF"
+    android:background="@color/light_blue_500"
     tools:context=".provider_registration">
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginTop="40dp"
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:breakStrategy="high_quality"
-        android:capitalize="none"
         android:fontFamily="sans-serif-black"
-        android:text="Provider Registration"
-        android:textSize="20sp"
+        android:padding="20dp"
+        android:text="Your next employee is one step away..."
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Company Name"
-        android:inputType="textPersonName"
+    <LinearLayout
+        android:id="@+id/btn_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="3dp"
+        android:background="@drawable/rounded_corner_rectangle"
+        android:backgroundTint="#9E9E9E"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/textView1">
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/baseline_upload_file_24"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload Logo"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner_rectangle"
+        android:backgroundTint="@color/light_blue_50"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:textColorHint="@color/black"
+        android:layout_margin="16dp"
+        android:hint="Company Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_upload"/>
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner_rectangle"
+        android:backgroundTint="@color/light_blue_50"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:textColorHint="@color/black"
+        android:layout_margin="16dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,20 +87,30 @@
 
     <EditText
         android:id="@+id/editTextPhone3"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="4dp"
-        android:ems="10"
-        android:hint="Conatct No"
-        android:inputType="phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner_rectangle"
+        android:backgroundTint="@color/light_blue_50"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:textColorHint="@color/black"
+        android:layout_margin="16dp"
+        android:hint="Location"
+        android:inputType="textPostalAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner_rectangle"
+        android:backgroundTint="@color/light_blue_50"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:textColorHint="@color/black"
+        android:layout_margin="16dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
@@ -72,8 +120,14 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner_rectangle"
+        android:backgroundTint="@color/light_blue_50"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:textColorHint="@color/black"
+        android:layout_margin="16dp"
         android:ems="10"
         android:hint="Confirm Password"
         android:inputType="textPersonName"
@@ -83,72 +137,32 @@
 
     <EditText
         android:id="@+id/editTextTextPostalAddress"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/rounded_corner_rectangle"
+        android:backgroundTint="@color/light_blue_50"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:textColorHint="@color/black"
+        android:layout_margin="16dp"
         android:ems="10"
-        android:hint="Postal Address"
-        android:inputType="textPostalAddress"
+        android:hint="A small description"
+        android:gravity="top"
+        android:inputType="textImeMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="54dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="136dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress"
-        app:srcCompat="@android:drawable/ic_menu_upload" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="210dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/button_gradient_white"
-        android:text="Upload Company Details"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="61dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress"
-        app:srcCompat="@android:drawable/ic_menu_upload" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="174dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/button_gradient_white"
-        android:text="Upload Company Logo"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="123dp"
-        android:layout_height="47dp"
+        android:layout_width="212dp"
+        android:layout_height="46dp"
         android:background="@drawable/button_gradient"
-        android:text="Register"
+        android:text="Register as a provider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
