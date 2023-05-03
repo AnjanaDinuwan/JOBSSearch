@@ -10,21 +10,24 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.jobssearch.data.ExampleDataSource
+import com.example.jobssearch.data.model.Job
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
+    var recommendedJobsAdapter = RecommendedJobsAdapter(listOf<Job>())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val data = arrayOf("soemthing", "nothing", "something", "something")
 
         val recyclerView = findViewById<RecyclerView>(R.id.rv_recommended_jobs);
-        val recommendedJobsAdapter = RecommendedJobsAdapter(data)
         recyclerView.adapter = recommendedJobsAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
+        ExampleDataSource.getRecommendedJobs { dataset -> recommendedJobsCallback(dataset) }
 
         val companiesBtn = findViewById<LinearLayout>(R.id.btn_companies);
         companiesBtn.setOnClickListener{
@@ -51,12 +54,27 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    class RecommendedJobsAdapter(private val dataset: Array<String>) :
+    fun recommendedJobsCallback(dataset: List<Job>) {
+        recommendedJobsAdapter.dataset = dataset
+        recommendedJobsAdapter.notifyDataSetChanged()
+    }
+
+    class RecommendedJobsAdapter(var dataset: List<Job>) :
         RecyclerView.Adapter<RecommendedJobsAdapter.ViewHolder>() {
         class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
+            val txtCompanyName : TextView
+            val txtJobName : TextView
+            val txtDescription : TextView
             init {
+                txtCompanyName = view.findViewById<TextView>(R.id.txt_company_name)
+                txtJobName = view.findViewById<TextView>(R.id.txt_job_name)
+                txtDescription = view.findViewById<TextView>(R.id.txt_job_desc)
+            }
 
+            fun bind(job : Job) {
+                txtJobName.text = job.name
+                txtCompanyName.text = job.companyName
+                txtDescription.text = job.description
             }
         }
 
@@ -68,7 +86,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
+            holder.bind(dataset[position])
         }
 
         override fun getItemCount(): Int {
