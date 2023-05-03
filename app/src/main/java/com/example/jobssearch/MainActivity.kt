@@ -32,8 +32,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val jobsearchBtn = findViewById<LinearLayout>(R.id.btn_job_search)
-        jobsearchBtn.setOnClickListener {
+        val seekersBtn = findViewById<LinearLayout>(R.id.btn_job_search)
+        seekersBtn.setOnClickListener {
             val intent = Intent(this, SeekerHome::class.java)
             startActivity(intent)
         }
@@ -41,6 +41,12 @@ class MainActivity : AppCompatActivity() {
         val quickjobsBtn = findViewById<LinearLayout>(R.id.btn_quick_jobs)
         quickjobsBtn.setOnClickListener {
             val intent = Intent(this, QuickJobsHome::class.java)
+            startActivity(intent)
+        }
+
+        val jobsearchBtn = findViewById<TextView>(R.id.txt_viewall)
+        jobsearchBtn.setOnClickListener {
+            val intent = Intent(this, JobsSearch::class.java)
             startActivity(intent)
         }
     }

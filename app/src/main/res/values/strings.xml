@@ -33,4 +33,5 @@
     <string name="companies_title">Companies</string>
     <string name="jobsearch_title">Job Search</string>
     <string name="quickjobs_title">Quick Jobs</string>
+    <string name="seekerhome_title">Seeker Home</string>
 </resources>

@@ -13,13 +13,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 
-class SeekerHome : AppCompatActivity() {
+class JobsSearch : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_seeker_home)
+        setContentView(R.layout.activity_jobs_search)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setTitle(R.string.seekerhome_title)
+        supportActionBar?.setTitle(R.string.jobsearch_title)
         supportActionBar?.elevation = 0.0F
 
 
@@ -64,7 +64,7 @@ class SeekerHome : AppCompatActivity() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.seeker_card_layout, parent, false)
+                .inflate(R.layout.job_card_layout, parent, false)
 
             return ViewHolder(view)
         }
