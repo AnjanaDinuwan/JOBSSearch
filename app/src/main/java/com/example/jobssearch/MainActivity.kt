@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -14,6 +15,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val data = arrayOf("soemthing", "nothing", "something", "something")
+
+        val recyclerView = findViewById<RecyclerView>(R.id.rv_recommended_jobs);
+        val recommendedJobsAdapter = RecommendedJobsAdapter(data)
+        recyclerView.adapter = recommendedJobsAdapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.setHasFixedSize(true)
     }
 }
 
