@@ -4,47 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient1"
-    tools:context=".SeekerHome"
+    android:background="#64CFFF"
+    android:backgroundTint="#64CFFF"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="#64CFFF"
-        android:backgroundTint="#64CFFF"
-        android:orientation="vertical"
-        android:padding="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="0dp">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="185dp"
+        android:layout_height="42dp"
+        android:text="Companies"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#000000"
+        android:textDirection="anyRtl"
+        android:textIsSelectable="false"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="Companies"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/RVJobsProvider"
-            android:layout_width="388dp"
-            android:layout_height="541dp"
-            android:layout_weight="1">
-
-        </androidx.recyclerview.widget.RecyclerView>
-    </LinearLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="370dp"
+        android:layout_height="669dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_view"
+        app:layout_constraintVertical_bias="0.349" />
 
-        app:menu="@menu/bottom_nav_menu_provider"/>
-
+    <SearchView
+        android:id="@+id/search_view"
+        android:layout_width="376dp"
+        android:layout_height="33dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:background="#E1F5FE"
+        android:backgroundTint="#E1F5FE"
+        android:clickable="true"
+        android:radius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
