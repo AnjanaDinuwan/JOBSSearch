@@ -10,8 +10,8 @@ import com.example.jobssearch.MainActivity
 
 import com.example.jobssearch.R
 import com.example.jobssearch.data.ExampleDataSource
-import com.example.jobssearch.provider_registration
-import com.example.jobssearch.seeker_registration
+import com.example.jobssearch.ProviderRegistration
+import com.example.jobssearch.SeekerRegistration
 
 class SignIn : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,14 +33,14 @@ class SignIn : AppCompatActivity() {
 
         val seekerButton = findViewById<Button>(R.id.btn_seeker_registration)
         seekerButton.setOnClickListener {
-            val intent = Intent(this, seeker_registration:: class.java)
+            val intent = Intent(this, SeekerRegistration:: class.java)
             startActivity(intent)
 
         }
 
         val providerButton = findViewById<Button>(R.id.btn_provider_registration)
         providerButton.setOnClickListener {
-            val intent = Intent(this, provider_registration:: class.java)
+            val intent = Intent(this, ProviderRegistration:: class.java)
             startActivity(intent)
 
         }
