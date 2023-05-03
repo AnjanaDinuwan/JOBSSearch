@@ -16,32 +16,30 @@
     <Button
         android:id="@+id/button10"
         android:layout_width="0dp"
-        android:layout_height="47dp"
+        android:layout_height="44dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/button_gradient_white"
         android:backgroundTint="#FEDD16"
         android:text="Continue as guest"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_signin" />
+
 
     <Button
         android:id="@+id/btn_provider_registration"
         android:layout_width="0dp"
-        android:layout_height="47dp"
+        android:layout_height="44dp"
         android:background="@drawable/button_gradient_white"
         android:backgroundTint="@color/light_blue_900"
         android:text="Register as a provider"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_seeker_registration"
-        app:layout_constraintVertical_bias="0.14" />
-
+        app:layout_constraintVertical_bias="0.315" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -55,22 +53,36 @@
 
     <EditText
         android:id="@+id/username"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:background="@drawable/rounded_corner_rectangle"
+        android:backgroundTint="@color/light_blue_50"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:textColor="@color/light_blue_900"
+        android:textColorHint="@color/light_blue_900"
         android:hint="@string/prompt_email"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.593"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner_rectangle"
+        android:backgroundTint="@color/light_blue_50"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:textColor="@color/light_blue_900"
+        android:textColorHint="@color/light_blue_900"
         android:layout_marginTop="16dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:hint="@string/prompt_password"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionDone"
@@ -98,12 +110,13 @@
         android:id="@+id/btn_seeker_registration"
         android:layout_width="0dp"
         android:layout_height="47dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/button_gradient_white"
         android:backgroundTint="@color/light_blue_900"
         android:text="Register as a Seeker"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.656"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button10" />
 
