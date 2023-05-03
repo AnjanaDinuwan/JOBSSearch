@@ -1,178 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#64CFFF"
-    android:backgroundTint="#64CFFF"
+    android:background="@color/purple_300"
     android:orientation="vertical"
-    android:padding="20dp"
-    tools:context=".MainActivity">
+    >
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_jobs"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_view" />
+
+    <EditText
+        android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/rounded_corner_rectangle"
+        android:backgroundTint="@color/purple_50"
+        android:textColor="@color/purple_900"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:layout_margin="16dp"
+        android:drawableRight="@drawable/ic_baseline_search_24"
+        android:drawableTint="@color/purple_900"
+        android:hint="Search"
+        android:textColorHint="@color/purple_900"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Quick Jobs"
-            android:textColor="#000"
-            android:textSize="30dp"
-            android:textStyle="bold" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:fabCustomSize="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/purple_900"
+        android:src="@drawable/ic_baseline_add_24"
+        android:tint="@color/white"
+        />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/quick_job_topic"
-            android:textColor="#272727"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/button17"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/button_gradient_white"
-            android:backgroundTint="#86375FBF"
-            android:text="Add Services"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.567"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_signin" />
-
-        <Button
-            android:id="@+id/button16"
-            android:layout_width="match_parent"
-            android:layout_height="47dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/button_gradient_white"
-            android:backgroundTint="#D59D9D"
-            android:text="Hire Service"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.567"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_signin" />
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_marginTop="20dp"
-            app:cardCornerRadius="15dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/card_gradient"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/t1"
-                    android:layout_width="217dp"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="A&amp;D construction services"
-                    android:textColor="#fff"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/t1"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="32dp"
-                    android:text="Jobs (71)"
-                    android:textColor="#fff" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/t1"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="3dp"
-                    android:text="House painting"
-                    android:textColor="#fff" />
-
-                <ImageView
-                    android:layout_width="114dp"
-                    android:layout_height="121dp"
-                    android:layout_alignParentRight="true"
-                    android:maxHeight="100dp"
-                    android:src="@drawable/_f4f4596_37ce_4fe1_9a6a_cbae362da603_1602032164729" />
-
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_marginTop="20dp"
-            app:cardCornerRadius="15dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/card_gradient"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/t3"
-                    android:layout_width="213dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="LJR Construction services pvt Ltd"
-                    android:textColor="#fff"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/t3"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="32dp"
-                    android:text="Jobs (34)"
-                    android:textColor="#fff" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/t3"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="3dp"
-                    android:text="Wood Works"
-                    android:textColor="#fff" />
-
-                <ImageView
-                    android:layout_width="115dp"
-                    android:layout_height="116dp"
-                    android:layout_alignParentRight="true"
-                    android:maxHeight="100dp"
-                    android:src="@drawable/ljr_wood" />
-
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-
-    </LinearLayout>
-
-</LinearLayout>
-
-
-
+</androidx.constraintlayout.widget.ConstraintLayout>

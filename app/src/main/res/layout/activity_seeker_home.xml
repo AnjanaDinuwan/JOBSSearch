@@ -4,51 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient1"
-    tools:context=".SeekerHome"
-    android:orientation="vertical">
+    android:background="@color/light_blue_500"
+    android:orientation="vertical"
+    >
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_jobs"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#64CFFF"
-        android:backgroundTint="#64CFFF"
-        android:orientation="vertical"
-        android:padding="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_view" />
 
-        <SearchView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:overScrollMode="always"
-            android:queryHint="Search Vacancies" />
-
-        <Button
-            android:id="@+id/button7"
-            android:layout_width="146dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/button_gradient"
-            android:text="Add new Vacancy" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/RVJobsSeeker"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-        </androidx.recyclerview.widget.RecyclerView>
-    </LinearLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView2"
+    <EditText
+        android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_nav_menu"/>
-
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/rounded_corner_rectangle"
+        android:backgroundTint="@color/light_blue_50"
+        android:textColor="@color/light_blue_900"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:layout_margin="16dp"
+        android:drawableRight="@drawable/ic_baseline_search_24"
+        android:drawableTint="@color/light_blue_900"
+        android:hint="Search"
+        android:textColorHint="@color/light_blue_900"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

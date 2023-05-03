@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/light_blue_50"
+        android:background="@color/purple_50"
         android:padding="16dp">
 
         <ImageView
@@ -28,16 +28,16 @@
             android:layout_toRightOf="@id/img_logo"
             android:layout_marginLeft="16dp"
             android:text="Company Name"
-            android:textColor="@color/light_blue_900"
+            android:textColor="@color/purple_900"
             android:textStyle="bold"
             android:textSize="18sp"/>
 
         <ImageView
             android:id="@+id/img_location_icon"
-            android:layout_width="12sp"
-            android:layout_height="12sp"
+            android:layout_width="16sp"
+            android:layout_height="16sp"
             android:src="@drawable/baseline_location_on_24"
-            app:tint="@color/light_blue_900"
+            app:tint="@color/purple_900"
             android:layout_toRightOf="@id/img_logo"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="5dp"
@@ -48,11 +48,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/img_location_icon"
+            android:layout_alignBaseline="@id/img_location_icon"
             android:layout_below="@id/txt_name"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:text="Location"
-            android:textColor="@color/light_blue_900"
+            android:textColor="@color/purple_900"
+            android:textSize="12sp"/>
+
+        <ImageView
+            android:id="@+id/img_paid_icon"
+            android:layout_width="16sp"
+            android:layout_height="16sp"
+            android:src="@drawable/baseline_paid_24"
+            app:tint="@color/purple_900"
+            android:layout_toRightOf="@id/img_logo"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/img_location_icon" />
+
+        <TextView
+            android:id="@+id/txt_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/img_paid_icon"
+            android:layout_alignBaseline="@id/img_paid_icon"
+            android:layout_below="@id/txt_location"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Rate"
+            android:textColor="@color/purple_900"
             android:textSize="12sp"/>
 
         <TextView
@@ -60,11 +85,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/img_logo"
-            android:layout_below="@id/txt_location"
+            android:layout_below="@id/txt_rate"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="16dp"
             android:text="Company description. This is where a description of the company goes"
-            android:textColor="@color/light_blue_900"
+            android:textColor="@color/purple_900"
             android:textSize="12sp"/>
 
     </RelativeLayout>

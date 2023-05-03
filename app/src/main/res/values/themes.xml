@@ -13,6 +13,13 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="elevation">0dp</item>
+    </style>
+
+    <style name="Theme.JOBSSearch.Purple" parent="Theme.JOBSSearch">
+        <item name="colorPrimary">@color/purple_300</item>
+        <item name="colorPrimaryVariant">@color/purple_300</item>
+        <item name="colorOnPrimary">@color/white</item>
     </style>
 
     <style name="Theme.JOBSSearch.NoActionBar">

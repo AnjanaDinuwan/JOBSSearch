@@ -3,9 +3,12 @@ package com.example.jobssearch
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.NavUtils
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -15,7 +18,12 @@ class SeekerHome : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seeker_home)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.RVJobsSeeker)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setTitle(R.string.jobsearch_title)
+        supportActionBar?.elevation = 0.0F
+
+
+        val recyclerView = findViewById<RecyclerView>(R.id.rv_jobs)
         val tList = ArrayList<Int>()
         tList.add(1)
         tList.add(2)
@@ -25,6 +33,24 @@ class SeekerHome : AppCompatActivity() {
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = jobAdapter
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                if (parentActivityIntent == null) {
+                    Log.i(
+                        "something",
+                        "You have forgotten to specify the parentActivityName in the AndroidManifest!"
+                    )
+                    onBackPressed()
+                } else {
+                    NavUtils.navigateUpFromSameTask(this)
+                }
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     class JobAdapter(private val context: Context, private val jobArrayList: ArrayList<Int>) :
@@ -38,7 +64,7 @@ class SeekerHome : AppCompatActivity() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.company_card_layout, parent, false)
+                .inflate(R.layout.job_card_layout, parent, false)
 
             return ViewHolder(view)
         }
