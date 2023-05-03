@@ -26,39 +26,49 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
 
-        val companiesbtn = findViewById<LinearLayout>(R.id.btn_companies);
-        companiesbtn.setOnClickListener{
-            intent = Intent(this, ProviderHome::class.java )
+        val companiesBtn = findViewById<LinearLayout>(R.id.btn_companies);
+        companiesBtn.setOnClickListener{
+            val intent = Intent(this, ProviderHome::class.java )
             startActivity(intent)
+        }
 
+        val jobsearchBtn = findViewById<LinearLayout>(R.id.btn_job_search)
+        jobsearchBtn.setOnClickListener {
+            val intent = Intent(this, SeekerHome::class.java)
+            startActivity(intent)
+        }
 
+        val quickjobsBtn = findViewById<LinearLayout>(R.id.btn_quick_jobs)
+        quickjobsBtn.setOnClickListener {
+            val intent = Intent(this, QuickJobsHome::class.java)
+            startActivity(intent)
+        }
+    }
+
+    class RecommendedJobsAdapter(private val dataset: Array<String>) :
+        RecyclerView.Adapter<RecommendedJobsAdapter.ViewHolder>() {
+        class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+            init {
+
+            }
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.job_card_layout, parent, false)
+
+            return ViewHolder(view);
+        }
+
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         }
+
+        override fun getItemCount(): Int {
+            return dataset.size
+        }
+
     }
 }
 
-class RecommendedJobsAdapter(private val dataset: Array<String>) :
-        RecyclerView.Adapter<RecommendedJobsAdapter.ViewHolder>() {
-            class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
-                init {
-
-                }
-            }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.job_card_layout, parent, false)
-
-        return ViewHolder(view);
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
-    }
-
-    override fun getItemCount(): Int {
-        return dataset.size
-    }
-
-        }
