@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_blue_500"
+    tools:context=".CompanyDetails">
+
+    <TextView
+        android:id="@+id/txt_company_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:text="Company Name"
+        android:textSize="24sp"
+        android:textFontWeight="600"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/img_company_logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintTop_toBottomOf="@id/txt_company_name"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:paddingHorizontal="16dp"
+        android:text="A small company descriptino goes here because there needs to be something that takes up space"
+        app:layout_constraintTop_toBottomOf="@+id/txt_company_name"
+        app:layout_constraintStart_toEndOf="@+id/img_company_logo"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/img_location_icon"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/baseline_location_on_24"
+        app:tint="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/img_company_logo"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+        android:id="@+id/txt_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Location"
+        app:layout_constraintTop_toBottomOf="@id/img_company_logo"
+        app:layout_constraintStart_toEndOf="@id/img_location_icon"/>
+
+    <ImageView
+        android:id="@+id/img_website_icon"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/baseline_language_24"
+        app:tint="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/img_location_icon"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+        android:id="@+id/txt_website"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="companywebsite.com"
+        app:layout_constraintTop_toBottomOf="@id/img_location_icon"
+        app:layout_constraintStart_toEndOf="@id/img_website_icon"/>
+
+    <ImageView
+        android:id="@+id/img_email_icon"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/baseline_email_24"
+        app:tint="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/img_website_icon"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+        android:id="@+id/txt_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="contact@companywebsite.com"
+        app:layout_constraintTop_toBottomOf="@id/img_website_icon"
+        app:layout_constraintStart_toEndOf="@id/img_email_icon"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_vacancies"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:paddingTop="32dp"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintTop_toBottomOf="@id/txt_email"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/recyclerview_company_details"
+        android:backgroundTint="@color/light_blue_50"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

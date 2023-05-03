@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/img_logo"
             android:layout_marginLeft="16dp"
-            android:text="Company Name"
+            android:text="Name"
             android:textColor="@color/purple_900"
             android:textStyle="bold"
             android:textSize="18sp"/>

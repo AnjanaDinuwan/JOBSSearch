@@ -15,7 +15,7 @@
         android:breakStrategy="high_quality"
         android:fontFamily="sans-serif-black"
         android:paddingHorizontal="36dp"
-        android:paddingTop="16dp"
+        android:paddingTop="0dp"
         android:paddingBottom="24dp"
         android:text="Your dream job is one\nstep away..."
         android:textSize="30dp"
