@@ -67,7 +67,6 @@
             android:layout_marginLeft="138dp"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginleft="6dp"
             android:layout_toEndOf="@+id/txt_cv"
             android:layout_toRightOf="@id/img_logo"
             android:background="@drawable/button_gradient_white"

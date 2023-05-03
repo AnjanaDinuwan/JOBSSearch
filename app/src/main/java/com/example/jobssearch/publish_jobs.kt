@@ -6,6 +6,6 @@ import android.os.Bundle
 class publish_jobs : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_publish_jobs)
+        setContentView(R.layout.activity_publish_vacancy)
     }
 }
