@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple_300">
+
+    <LinearLayout
+        android:id="@+id/btn_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/profile_round"
+        android:backgroundTint="#9E9E9E"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="155dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_baseline_person_24"
+            app:tint="@color/white" />
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/ServiceProviderNameView"
+        android:layout_width="166dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="24dp"
+        android:text="Name"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_profile" />
+
+    <TextView
+        android:id="@+id/ServiceProviderCostView"
+        android:layout_width="166dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="24dp"
+        android:text="Cost per hour"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ServiceProviderNameView" />
+
+    <TextView
+        android:id="@+id/ServiceProviderDetailsView"
+        android:layout_width="166dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="24dp"
+        android:text="Skills"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ServiceProviderCostView" />
+
+
+    <EditText
+        android:id="@+id/jobProviderEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/rounded_corner_rectangle"
+        android:backgroundTint="@color/light_blue_50"
+        android:hint="Enter estimated hours"
+        android:inputType="textPostalAddress"
+        android:padding="10dp"
+        android:textColorHint="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ServiceProviderDetailsView" />
+
+    <TextView
+        android:id="@+id/daysTextView2"
+        android:layout_width="73dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="72dp"
+        android:text="Cost"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/jobProviderEditText"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/hireButton"
+        android:layout_width="145dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="240dp"
+        android:background="@drawable/button_gradient"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:text="Hire"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/daysTextView2"
+        app:layout_constraintVertical_bias="0.316" />
+
+    <Button
+        android:id="@+id/contactButton"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button_gradient_white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:text="Contact"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/hireButton"
+        app:layout_constraintTop_toBottomOf="@+id/daysTextView2"
+        app:layout_constraintVertical_bias="0.09" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
