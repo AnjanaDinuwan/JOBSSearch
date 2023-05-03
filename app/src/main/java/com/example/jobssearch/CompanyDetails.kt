@@ -8,23 +8,22 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.core.app.NavUtils
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 
-class QuickJobsHome : AppCompatActivity() {
+class CompanyDetails : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_quick_jobs_home)
+        setContentView(R.layout.activity_company_details)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setTitle(R.string.quickjobs_title)
+        supportActionBar?.setTitle(R.string.empty)
         supportActionBar?.elevation = 0.0F
 
 
-        val recyclerView = findViewById<RecyclerView>(R.id.rv_jobs)
+        val recyclerView = findViewById<RecyclerView>(R.id.rv_vacancies)
         val tList = ArrayList<Int>()
         tList.add(1)
         tList.add(2)
@@ -65,7 +64,7 @@ class QuickJobsHome : AppCompatActivity() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.quick_jobs_card_layout, parent, false)
+                .inflate(R.layout.vacancy_card, parent, false)
 
             return ViewHolder(view)
         }
