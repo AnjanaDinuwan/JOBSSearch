@@ -14,7 +14,7 @@ class ProviderHome : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_provider_home)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.RVJobsProvider)
+        val recyclerView = findViewById<RecyclerView>(R.id.rv_companies)
         val tList = ArrayList<Int>()
         tList.add(1)
         tList.add(2)

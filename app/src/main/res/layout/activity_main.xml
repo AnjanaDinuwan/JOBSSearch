@@ -27,7 +27,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginRight="16dp"
         android:text="USERNAME"
-        android:background="@drawable/main_activity_button"
+        android:background="@drawable/rounded_corner_rectangle"
         android:backgroundTint="@color/light_blue_100"
         android:textColor="@color/light_blue_900"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/main_activity_button"
+        android:background="@drawable/rounded_corner_rectangle"
         android:backgroundTint="@color/light_blue_900"
         android:gravity="center_horizontal"
         android:padding="10dp" >
@@ -74,7 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/main_activity_button"
+        android:background="@drawable/rounded_corner_rectangle"
         android:backgroundTint="@color/light_blue_900"
         android:gravity="center_horizontal"
         android:padding="10dp" >
@@ -103,7 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/main_activity_button"
+        android:background="@drawable/rounded_corner_rectangle"
         android:backgroundTint="@color/light_blue_900"
         android:gravity="center_horizontal"
         android:padding="10dp" >
