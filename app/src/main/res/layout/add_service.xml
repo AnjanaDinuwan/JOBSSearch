@@ -22,7 +22,7 @@
         android:layout_width="335dp"
         android:layout_height="20dp"
         android:layout_marginTop="36dp"
-        android:text="Quick Job Title"
+        android:text="Quick Job Title1"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
