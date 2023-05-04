@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -50,6 +51,12 @@ class MainActivity : AppCompatActivity() {
         val jobsearchBtn = findViewById<TextView>(R.id.txt_viewall)
         jobsearchBtn.setOnClickListener {
             val intent = Intent(this, JobsSearch::class.java)
+            startActivity(intent)
+        }
+
+        val userprofile = findViewById<Button>(R.id.btn_profile)
+        userprofile.setOnClickListener {
+            val intent = Intent(this, UserProfile::class.java)
             startActivity(intent)
         }
     }
