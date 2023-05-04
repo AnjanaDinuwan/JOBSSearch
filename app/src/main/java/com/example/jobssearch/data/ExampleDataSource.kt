@@ -13,15 +13,17 @@ object ExampleDataSource {
         Seeker(0,"Anjana Munasinghe", "Anjana", "password", "anjana@gmail.com","",""),
     )
     var providers : MutableList<Provider> = mutableListOf(
-        Provider(0,"Pasan","pasan@gmail.com","Microsoft","Microsoft","","","",""),
+        Provider(0,"password","pasan@gmail.com","Microsoft","Microsoft","","","",""),
+        Provider(1,"password","bill@gmail.com","Amazon","Amazon","","","",""),
+        Provider(2,"password","anthony@gmail.com","Google","Google","","","",""),
+        Provider(3,"password","mercedes@gmail.com","Virtusa","Virtusa","","","",""),
     )
     var jobs : MutableList<Job> = mutableListOf(
-        Job(0,0,null, null, "Fulltime","Web Designer","text1","LKR 50000"),
+        Job(0,2,null, null, "Fulltime","Web Designer","text1","LKR 50000"),
         Job(1,0,null, null, "Fulltime","UI/UX Designer","text1","LKR 50000"),
-        Job(2,0,null, null, "Fulltime","Machine learning engineer","text1","LKR 20000"),
-        Job(3,0,null, null, "Fulltime","Software engineer","text1","LKR 100000"),
+        Job(2,1,null, null, "Fulltime","Machine learning engineer","text1","LKR 20000"),
+        Job(3,3,null, null, "Fulltime","Software engineer","text1","LKR 100000"),
         Job(4,0,null, null, "Fulltime","Tech lead","text1","LKR 500000"),
-
     )
 
 
