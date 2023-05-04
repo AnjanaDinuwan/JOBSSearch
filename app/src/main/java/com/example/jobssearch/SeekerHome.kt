@@ -23,16 +23,6 @@ class SeekerHome : AppCompatActivity() {
         supportActionBar?.elevation = 0.0F
 
 
-        val recyclerView = findViewById<RecyclerView>(R.id.rv_jobs)
-        val tList = ArrayList<Int>()
-        tList.add(1)
-        tList.add(2)
-        tList.add(3)
-        tList.add(4)
-        val jobAdapter = JobAdapter(this, tList)
-        val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        recyclerView.layoutManager = linearLayoutManager
-        recyclerView.adapter = jobAdapter
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -53,26 +43,4 @@ class SeekerHome : AppCompatActivity() {
         }
     }
 
-    class JobAdapter(private val context: Context, private val jobArrayList: ArrayList<Int>) :
-        RecyclerView.Adapter<JobAdapter.ViewHolder>() {
-
-        class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            init {
-
-            }
-        }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.seeker_card_layout, parent, false)
-
-            return ViewHolder(view)
-        }
-
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
-        }
-
-        override fun getItemCount() = jobArrayList.size
-    }
 }
