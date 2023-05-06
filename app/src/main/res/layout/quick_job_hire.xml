@@ -40,7 +40,7 @@
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_profile" />
 
@@ -53,7 +53,7 @@
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ServiceProviderNameView" />
 
@@ -66,7 +66,7 @@
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ServiceProviderCostView" />
 
@@ -99,7 +99,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/jobProviderEditText"
-        tools:ignore="MissingConstraints" />
+         />
 
     <Button
         android:id="@+id/hireButton"
@@ -114,7 +114,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/daysTextView2"
-        app:layout_constraintVertical_bias="0.316" />
+         />
 
     <Button
         android:id="@+id/contactButton"
@@ -129,9 +129,9 @@
         android:text="Contact"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+
         app:layout_constraintStart_toEndOf="@+id/hireButton"
         app:layout_constraintTop_toBottomOf="@+id/daysTextView2"
-        app:layout_constraintVertical_bias="0.09" />
+       />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
