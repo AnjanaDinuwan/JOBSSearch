@@ -9,14 +9,22 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NavUtils
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.jobssearch.data.MainDataSource
+import com.example.jobssearch.data.model.Job
+import com.example.jobssearch.data.model.Provider
+import kotlinx.coroutines.launch
 import javax.xml.transform.ErrorListener
 
 
 class ProviderHome : AppCompatActivity() {
+    var providerAdapter = ProviderAdapter(listOf()) { id -> onCompanyCardClick(id) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_provider_home)
@@ -26,19 +34,18 @@ class ProviderHome : AppCompatActivity() {
         supportActionBar?.elevation = 0.0F
 
         val recyclerView = findViewById<RecyclerView>(R.id.rv_companies)
-        val tList = ArrayList<Int>()
-        tList.add(1)
-        tList.add(2)
-        tList.add(3)
-        tList.add(4)
-        val jobAdapter = ProviderHome.CompanyAdapter(this, tList) { -> onCompanyCardClick() }
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = linearLayoutManager
-        recyclerView.adapter = jobAdapter
+        recyclerView.adapter = providerAdapter
+
+        lifecycleScope.launch {
+            MainDataSource.getAllProviders { result -> providerCallback(result) }
+        }
     }
 
-    fun onCompanyCardClick() {
+    fun onCompanyCardClick(id: Int) {
         val intent = Intent(this, CompanyDetails::class.java)
+        intent.putExtra("ID", id)
         startActivity(intent)
     }
 
@@ -60,30 +67,48 @@ class ProviderHome : AppCompatActivity() {
         }
     }
 
-    class CompanyAdapter(private val context: Context, private val jobArrayList: ArrayList<Int>, private val listener: () -> Unit) :
-        RecyclerView.Adapter<CompanyAdapter.ViewHolder>() {
+    fun providerCallback(dataset: List<Provider>) {
+        providerAdapter.dataset = dataset
+        providerAdapter.notifyDataSetChanged()
+    }
 
+    class ProviderAdapter(var dataset: List<Provider>, val callback: (Int) -> Unit) :
+        RecyclerView.Adapter<ProviderAdapter.ViewHolder>() {
         class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            var companyCard: RelativeLayout
+            val txtCompanyName : TextView
+            val txtLocation : TextView
+            val txtDescription : TextView
             init {
-                companyCard = view.findViewById<RelativeLayout>(R.id.company_card)
+                txtCompanyName = view.findViewById<TextView>(R.id.txt_company_name)
+                txtLocation = view.findViewById<TextView>(R.id.txt_location)
+                txtDescription = view.findViewById<TextView>(R.id.txt_company_desc)
             }
 
+            fun bind(provider : Provider) {
+                txtCompanyName.text = provider.companyName
+                txtLocation.text = provider.location
+                txtDescription.text = provider.description
+            }
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.company_card_layout, parent, false)
 
-            return ViewHolder(view)
+            return ViewHolder(view);
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            holder.companyCard.setOnClickListener{
-                listener()
+            val job = dataset[position]
+            holder.bind(job)
+            holder.itemView.setOnClickListener {
+                callback(job.id)
             }
         }
 
-        override fun getItemCount() = jobArrayList.size
+        override fun getItemCount(): Int {
+            return dataset.size
+        }
+
     }
 }

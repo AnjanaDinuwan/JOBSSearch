@@ -8,26 +8,36 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.jobssearch.data.ExampleDataSource
+import androidx.room.Room
+import com.example.jobssearch.data.AppDatabase
+import com.example.jobssearch.data.MainDataSource
 import com.example.jobssearch.data.model.Job
-import com.google.android.material.bottomappbar.BottomAppBar
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import org.w3c.dom.Text
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
-    var recommendedJobsAdapter = RecommendedJobsAdapter(listOf<Job>())
+    var recommendedJobsAdapter = RecommendedJobsAdapter(listOf<MainDataSource.JobCompanyInfo>())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
+        MainDataSource.setDatabase(Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java, "main.db"
+        ).createFromAsset("main_db.db").build())
+
         val recyclerView = findViewById<RecyclerView>(R.id.rv_recommended_jobs);
         recyclerView.adapter = recommendedJobsAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
-        ExampleDataSource.getRecommendedJobs { dataset -> recommendedJobsCallback(dataset) }
+
+        lifecycleScope.launch {
+//            ExampleDataSource.insertJob("soemthing", 1)
+            MainDataSource.getRecommendedJobs { dataset -> recommendedJobsCallback(dataset) }
+        }
 
         val companiesBtn = findViewById<LinearLayout>(R.id.btn_companies);
         companiesBtn.setOnClickListener{
@@ -54,12 +64,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun recommendedJobsCallback(dataset: List<Job>) {
+    fun recommendedJobsCallback(dataset: List<MainDataSource.JobCompanyInfo>) {
         recommendedJobsAdapter.dataset = dataset
         recommendedJobsAdapter.notifyDataSetChanged()
     }
 
-    class RecommendedJobsAdapter(var dataset: List<Job>) :
+    class RecommendedJobsAdapter(var dataset: List<MainDataSource.JobCompanyInfo>) :
         RecyclerView.Adapter<RecommendedJobsAdapter.ViewHolder>() {
         class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val txtCompanyName : TextView
@@ -71,7 +81,7 @@ class MainActivity : AppCompatActivity() {
                 txtDescription = view.findViewById<TextView>(R.id.txt_job_desc)
             }
 
-            fun bind(job : Job) {
+            fun bind(job : MainDataSource.JobCompanyInfo) {
                 txtJobName.text = job.name
                 txtCompanyName.text = job.companyName
                 txtDescription.text = job.description

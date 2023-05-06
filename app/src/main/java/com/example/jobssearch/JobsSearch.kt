@@ -1,6 +1,5 @@
 package com.example.jobssearch
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,12 +7,18 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.app.NavUtils
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.jobssearch.data.MainDataSource
+import com.example.jobssearch.data.model.Job
+import kotlinx.coroutines.launch
 
 
 class JobsSearch : AppCompatActivity() {
+    val allJobsAdapter = AllJobsAdapter(listOf())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_jobs_search)
@@ -24,15 +29,13 @@ class JobsSearch : AppCompatActivity() {
 
 
         val recyclerView = findViewById<RecyclerView>(R.id.rv_jobs)
-        val tList = ArrayList<Int>()
-        tList.add(1)
-        tList.add(2)
-        tList.add(3)
-        tList.add(4)
-        val jobAdapter = JobAdapter(this, tList)
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = linearLayoutManager
-        recyclerView.adapter = jobAdapter
+        recyclerView.adapter = allJobsAdapter
+
+        lifecycleScope.launch {
+            MainDataSource.getAllJobs { result -> allJobsCallback(result)}
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -53,12 +56,27 @@ class JobsSearch : AppCompatActivity() {
         }
     }
 
-    class JobAdapter(private val context: Context, private val jobArrayList: ArrayList<Int>) :
-        RecyclerView.Adapter<JobAdapter.ViewHolder>() {
+    fun allJobsCallback(dataset: List<MainDataSource.JobCompanyInfo>) {
+        allJobsAdapter.dataset = dataset
+        allJobsAdapter.notifyDataSetChanged()
+    }
 
+    class AllJobsAdapter(var dataset: List<MainDataSource.JobCompanyInfo>) :
+        RecyclerView.Adapter<AllJobsAdapter.ViewHolder>() {
         class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+            val txtCompanyName : TextView
+            val txtJobName : TextView
+            val txtDescription : TextView
             init {
+                txtCompanyName = view.findViewById<TextView>(R.id.txt_company_name)
+                txtJobName = view.findViewById<TextView>(R.id.txt_job_name)
+                txtDescription = view.findViewById<TextView>(R.id.txt_job_desc)
+            }
 
+            fun bind(job : MainDataSource.JobCompanyInfo) {
+                txtJobName.text = job.name
+                txtCompanyName.text = job.companyName
+                txtDescription.text = job.description
             }
         }
 
@@ -66,13 +84,15 @@ class JobsSearch : AppCompatActivity() {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.job_card_layout, parent, false)
 
-            return ViewHolder(view)
+            return ViewHolder(view);
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
+            holder.bind(dataset[position])
         }
 
-        override fun getItemCount() = jobArrayList.size
+        override fun getItemCount(): Int {
+            return dataset.size
+        }
     }
 }
