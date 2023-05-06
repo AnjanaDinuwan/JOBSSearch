@@ -24,12 +24,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        MainDataSource.setDatabase(Room.databaseBuilder(
-            applicationContext,
-            AppDatabase::class.java, "main.db"
-        ).createFromAsset("main_db.db").build())
-
         val recyclerView = findViewById<RecyclerView>(R.id.rv_recommended_jobs);
         recyclerView.adapter = recommendedJobsAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)

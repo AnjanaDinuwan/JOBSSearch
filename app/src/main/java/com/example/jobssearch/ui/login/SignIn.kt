@@ -6,17 +6,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.room.Room
 import com.example.jobssearch.MainActivity
 
 import com.example.jobssearch.R
 import com.example.jobssearch.data.MainDataSource
 import com.example.jobssearch.ProviderRegistration
 import com.example.jobssearch.SeekerRegistration
+import com.example.jobssearch.data.AppDatabase
 
 class SignIn : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
+
+        MainDataSource.setDatabase(
+            Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java, "main.db"
+        ).createFromAsset("main_db.db").build())
 
 
         val signInButton = findViewById<Button>(R.id.btn_signin)

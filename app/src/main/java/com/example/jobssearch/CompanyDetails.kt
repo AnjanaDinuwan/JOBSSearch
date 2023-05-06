@@ -1,5 +1,6 @@
 package com.example.jobssearch
 
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.app.NavUtils
 import androidx.lifecycle.lifecycleScope
@@ -16,6 +18,7 @@ import com.example.jobssearch.data.MainDataSource
 import com.example.jobssearch.data.model.Job
 import com.example.jobssearch.data.model.Provider
 import kotlinx.coroutines.launch
+import java.io.File
 
 
 class CompanyDetails : AppCompatActivity() {
@@ -24,6 +27,7 @@ class CompanyDetails : AppCompatActivity() {
     var txtLocation : TextView? = null
     var txtEmail : TextView? = null
     var txtWebsite : TextView? = null
+    var imgLogo : ImageView? = null
     var jobAdapter : JobAdapter = JobAdapter(listOf())
     var id = 0
 
@@ -42,6 +46,7 @@ class CompanyDetails : AppCompatActivity() {
         txtLocation = findViewById(R.id.txt_location)
         txtWebsite = findViewById(R.id.txt_website)
         txtEmail = findViewById(R.id.txt_email)
+        imgLogo = findViewById(R.id.img_company_logo)
 
         val recyclerView = findViewById<RecyclerView>(R.id.rv_vacancies)
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -78,6 +83,14 @@ class CompanyDetails : AppCompatActivity() {
         txtLocation?.text = provider.location
         txtWebsite?.text = provider.contact
         txtEmail?.text = provider.email
+
+        if (provider.logo != "") {
+            val imgFile = File(this.filesDir, provider.logo)
+            if (imgFile.exists()) {
+                val logo = BitmapFactory.decodeFile(imgFile.absolutePath)
+                imgLogo?.setImageBitmap(logo)
+            }
+        }
     }
 
     fun companyJobsCallback(jobs: List<Job>) {

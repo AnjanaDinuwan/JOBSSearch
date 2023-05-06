@@ -31,15 +31,15 @@
         android:id="@+id/btn_provider_registration"
         android:layout_width="0dp"
         android:layout_height="44dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/button_gradient_white"
         android:backgroundTint="@color/light_blue_900"
         android:text="Register as a provider"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_seeker_registration"
-        app:layout_constraintVertical_bias="0.315" />
+        />
 
     <ImageView
         android:id="@+id/imageView"
@@ -116,7 +116,6 @@
         android:text="Register as a Seeker"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.656"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button10" />
 

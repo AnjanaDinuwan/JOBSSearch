@@ -136,6 +136,12 @@ class SeekerRegistration : AppCompatActivity() {
 
     fun isSuccessCallback(result: Boolean) {
         Log.d("Something", "The result is $result")
+        if (result) {
+            finish()
+        }
+        else {
+            Toast.makeText(this, "Something went wrong please try again!", Toast.LENGTH_LONG).show()
+        }
     }
 
     val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) {uri ->

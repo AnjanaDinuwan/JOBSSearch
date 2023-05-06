@@ -14,7 +14,8 @@ interface JobDao {
     @Insert
     suspend fun insertJob(j: Job)
 
-    @Query("SELECT jobs.id, jobs.name, jobs.description, providers.company_name " +
+    @Query("SELECT jobs.id, jobs.name, jobs.description, providers.company_name, " +
+            "providers.logo " +
             "FROM jobs, providers " +
             "WHERE jobs.company_id = providers.id")
     suspend fun getJobWithCompany(): List<MainDataSource.JobCompanyInfo>

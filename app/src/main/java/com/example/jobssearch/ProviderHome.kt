@@ -2,12 +2,15 @@ package com.example.jobssearch
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -20,11 +23,12 @@ import com.example.jobssearch.data.MainDataSource
 import com.example.jobssearch.data.model.Job
 import com.example.jobssearch.data.model.Provider
 import kotlinx.coroutines.launch
+import java.io.File
 import javax.xml.transform.ErrorListener
 
 
 class ProviderHome : AppCompatActivity() {
-    var providerAdapter = ProviderAdapter(listOf()) { id -> onCompanyCardClick(id) }
+    var providerAdapter = ProviderAdapter(this, listOf()) { id -> onCompanyCardClick(id) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_provider_home)
@@ -72,22 +76,32 @@ class ProviderHome : AppCompatActivity() {
         providerAdapter.notifyDataSetChanged()
     }
 
-    class ProviderAdapter(var dataset: List<Provider>, val callback: (Int) -> Unit) :
+    class ProviderAdapter(private val context: Context, var dataset: List<Provider>, val callback: (Int) -> Unit) :
         RecyclerView.Adapter<ProviderAdapter.ViewHolder>() {
-        class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        class ViewHolder(view: View, private val context: Context) : RecyclerView.ViewHolder(view) {
             val txtCompanyName : TextView
             val txtLocation : TextView
             val txtDescription : TextView
+            val imgLogo : ImageView
             init {
                 txtCompanyName = view.findViewById<TextView>(R.id.txt_company_name)
                 txtLocation = view.findViewById<TextView>(R.id.txt_location)
                 txtDescription = view.findViewById<TextView>(R.id.txt_company_desc)
+                imgLogo = view.findViewById(R.id.img_logo)
             }
 
             fun bind(provider : Provider) {
                 txtCompanyName.text = provider.companyName
                 txtLocation.text = provider.location
                 txtDescription.text = provider.description
+
+                if (provider.logo != "") {
+                    val imgFile = File(context.filesDir, provider.logo)
+                    if (imgFile.exists()) {
+                        val logo = BitmapFactory.decodeFile(imgFile.absolutePath)
+                        imgLogo.setImageBitmap(logo)
+                    }
+                }
             }
         }
 
@@ -95,7 +109,7 @@ class ProviderHome : AppCompatActivity() {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.company_card_layout, parent, false)
 
-            return ViewHolder(view);
+            return ViewHolder(view, context);
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {

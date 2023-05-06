@@ -128,10 +128,23 @@ object MainDataSource {
         callback(true)
     }
 
+    suspend fun addNewProvider(context: Context, name: String, email: String, address: String, password: String, description: String,
+                             logoUri: Uri, callback: (Boolean) -> Unit) {
+
+        Log.d("Something", "here - Provider")
+        val logoUrl = UUID.randomUUID().toString()
+        moveFile(context, logoUri, logoUrl)
+
+        val provider = Provider(0, password, email, name, name, logoUrl, address, description, address)
+        providerDao?.insertProvider(provider)
+        callback(true)
+    }
+
     data class JobCompanyInfo (
         @ColumnInfo(name = "id") val id : Int?,
         @ColumnInfo(name = "company_name") val companyName : String?,
         @ColumnInfo(name = "name") val name: String?,
-        @ColumnInfo(name = "description") val description : String?
+        @ColumnInfo(name = "description") val description : String?,
+        @ColumnInfo(name = "logo") val logo: String?
     )
 }
