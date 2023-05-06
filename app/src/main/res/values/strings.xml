@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">JOBS Search</string>
+    <string name="app_name">jobsearch</string>
     <string name="title_activity_sign_in">SignIn</string>
     <string name="login_fragment_heading">Welcome Back</string>
     <string name="login_fragment_sub_heading">Let’s Login. Fill in your details to apply for jobs!</string>
@@ -34,4 +34,5 @@
     <string name="jobsearch_title">Job Search</string>
     <string name="quickjobs_title">Quick Jobs</string>
     <string name="seekerhome_title">Seeker Home</string>
+    <string name="UpdatePosition_title">Update Position</string>
 </resources>
