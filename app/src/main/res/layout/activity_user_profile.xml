@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#64CFFF"
-    android:backgroundTint="#64CFFF"
-    tools:context=".update_profile">
+    android:background="@color/light_blue_500"
+    tools:context=".UserProfile">
 
 
     <EditText
@@ -90,24 +89,25 @@
         android:layout_width="155dp"
         android:layout_height="56dp"
         android:layout_marginBottom="32dp"
-        android:background="@drawable/button_gradient"
+        android:background="@drawable/rounded_corner_rectangle"
+        android:backgroundTint="@color/light_blue_900"
         android:text="Update Profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPhone2" />
 
     <Button
         android:id="@+id/button8"
-        android:layout_width="176dp"
-        android:layout_height="46dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="15dp"
         android:layout_marginTop="12dp"
-        android:background="@drawable/button_gradient_white"
+        android:background="@drawable/rounded_corner_rectangle"
+        android:backgroundTint="@color/light_blue_900"
         android:text="Change Picture/Logo"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_profile" />
 

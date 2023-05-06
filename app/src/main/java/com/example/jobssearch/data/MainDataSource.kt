@@ -1,6 +1,9 @@
 package com.example.jobssearch.data
 
+import android.content.Context
+import android.net.Uri
 import android.util.Log
+import androidx.documentfile.provider.DocumentFile
 import androidx.room.ColumnInfo
 import com.example.jobssearch.data.dao.JobDao
 import com.example.jobssearch.data.dao.ProviderDao
@@ -8,6 +11,11 @@ import com.example.jobssearch.data.dao.SeekerDao
 import com.example.jobssearch.data.model.Job
 import com.example.jobssearch.data.model.Provider
 import com.example.jobssearch.data.model.Seeker
+import java.io.File
+import java.io.FileOutputStream
+import java.io.InputStream
+import java.io.OutputStream
+import java.util.UUID
 
 object MainDataSource {
 
@@ -92,6 +100,32 @@ object MainDataSource {
     suspend fun getAllJobsForProvider(id: Int, callback: (List<Job>) -> Unit) {
         var result = providerDao?.getAllJobs(id) ?: listOf()
         callback(result)
+    }
+
+    fun moveFile(context: Context, initialFileUri: Uri, destination: String) {
+        val destinationFile = File(context.filesDir, destination)
+        val inputStream: InputStream? = context.contentResolver.openInputStream(initialFileUri)
+        val outputStream: OutputStream = FileOutputStream(destinationFile)
+
+        if (inputStream != null) {
+            inputStream.copyTo(outputStream)
+            inputStream.close()
+            outputStream.close()
+        }
+    }
+
+    suspend fun addNewSeeker(context: Context, name: String, email: String, address: String, password: String,
+                             photoUri: Uri, cvUri: Uri, callback: (Boolean) -> Unit) {
+
+        Log.d("Something", "here")
+        val photoUrl = UUID.randomUUID().toString()
+        moveFile(context, photoUri, photoUrl)
+        val cvUrl = UUID.randomUUID().toString()
+        moveFile(context, cvUri, cvUrl)
+
+        val seeker = Seeker(0, name, name, password, email, cvUrl, photoUrl)
+        seekerDao?.insertSeeker(seeker)
+        callback(true)
     }
 
     data class JobCompanyInfo (
