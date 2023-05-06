@@ -9,7 +9,7 @@ import android.widget.Toast
 import com.example.jobssearch.MainActivity
 
 import com.example.jobssearch.R
-import com.example.jobssearch.data.ExampleDataSource
+import com.example.jobssearch.data.MainDataSource
 import com.example.jobssearch.ProviderRegistration
 import com.example.jobssearch.SeekerRegistration
 
@@ -54,7 +54,7 @@ class SignIn : AppCompatActivity() {
         val username = usernameTextView.text.toString()
         val password = passwordTextView.text.toString()
 
-        val result = ExampleDataSource.validateSignIn(username, password)
+        val result = MainDataSource.validateSignIn(username, password)
 
         if (result) {
             Toast.makeText(this@SignIn,
