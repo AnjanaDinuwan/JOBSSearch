@@ -35,4 +35,8 @@
     <string name="quickjobs_title">Quick Jobs</string>
     <string name="seekerhome_title">Seeker Home</string>
     <string name="UpdatePosition_title">Update Position</string>
+    <string name="Add_Service">Add your service here</string>
+    <string name="update_profile">Update your profile</string>
+    <string name="publish_vacancy">Add your new vacancy here</string>
+    <string name="hire_service">Hire me</string>
 </resources>

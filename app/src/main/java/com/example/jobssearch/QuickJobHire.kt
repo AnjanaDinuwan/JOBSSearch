@@ -6,14 +6,15 @@ import android.util.Log
 import android.view.MenuItem
 import androidx.core.app.NavUtils
 
-class UserProfile : AppCompatActivity() {
+class QuickJobHire : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user_profile)
+        setContentView(R.layout.quick_job_hire)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setTitle(R.string.update_profile)
+        supportActionBar?.setTitle(R.string.hire_service)
         supportActionBar?.elevation = 0.0F
+
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {

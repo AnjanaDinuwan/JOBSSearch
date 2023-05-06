@@ -9,8 +9,6 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.LinearLayout
 import androidx.core.app.NavUtils
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,18 +23,16 @@ class QuickJobsHome : AppCompatActivity() {
         supportActionBar?.setTitle(R.string.quickjobs_title)
         supportActionBar?.elevation = 0.0F
 
-
         val recyclerView = findViewById<RecyclerView>(R.id.rv_jobs)
         val tList = ArrayList<Int>()
         tList.add(1)
         tList.add(2)
         tList.add(3)
         tList.add(4)
-        val jobAdapter = JobAdapter(this, tList)
+        val jobAdapter = QuickJobsHome.JobAdapter(this, tList) { -> onServiceCardClick() }
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = jobAdapter
-
 
         val plusBtn = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.btn_plus);
         plusBtn.setOnClickListener{
@@ -44,7 +40,12 @@ class QuickJobsHome : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
 
+    private fun onServiceCardClick() {
+
+        val intent = Intent(this, QuickJobHire::class.java)
+        startActivity(intent)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -65,7 +66,11 @@ class QuickJobsHome : AppCompatActivity() {
         }
     }
 
-    class JobAdapter(private val context: Context, private val jobArrayList: ArrayList<Int>) :
+    class JobAdapter(
+        private val context: Context,
+        private val jobArrayList: ArrayList<Int>,
+        function: () -> Unit
+    ) :
         RecyclerView.Adapter<JobAdapter.ViewHolder>() {
 
         class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

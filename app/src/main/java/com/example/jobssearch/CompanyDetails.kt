@@ -1,5 +1,6 @@
 package com.example.jobssearch
 
+import android.content.Intent
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -56,6 +57,13 @@ class CompanyDetails : AppCompatActivity() {
         lifecycleScope.launch {
             MainDataSource.getProviderInfo(id) { provider -> companyInfoCallback(provider) }
             MainDataSource.getAllJobsForProvider(id) { jobs -> companyJobsCallback(jobs) }
+        }
+
+
+        val plusBtn2 = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.btn_plus2);
+        plusBtn2.setOnClickListener{
+            val intent = Intent(this, PublishVacancy::class.java )
+            startActivity(intent)
         }
     }
 

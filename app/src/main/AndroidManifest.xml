@@ -12,6 +12,9 @@
         android:theme="@style/Theme.JOBSSearch"
         tools:targetApi="31">
         <activity
+            android:name=".QuickJobHire"
+            android:exported="false" />
+        <activity
             android:name=".AddService"
             android:exported="false" />
         <activity
@@ -28,7 +31,7 @@
             android:exported="true"
             android:theme="@style/Theme.JOBSSearch" />
         <activity
-            android:name=".publish_jobs"
+            android:name=".PublishVacancy"
             android:exported="false" />
         <activity
             android:name=".SeekerRegistration"

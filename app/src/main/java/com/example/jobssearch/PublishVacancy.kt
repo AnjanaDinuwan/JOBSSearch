@@ -6,15 +6,16 @@ import android.util.Log
 import android.view.MenuItem
 import androidx.core.app.NavUtils
 
-class UserProfile : AppCompatActivity() {
+class PublishVacancy : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user_profile)
+        setContentView(R.layout.activity_publish_vacancy)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setTitle(R.string.update_profile)
+        supportActionBar?.setTitle(R.string.publish_vacancy)
         supportActionBar?.elevation = 0.0F
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
