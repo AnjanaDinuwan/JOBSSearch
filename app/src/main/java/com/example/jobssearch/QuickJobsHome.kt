@@ -1,6 +1,7 @@
 package com.example.jobssearch
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import androidx.core.app.NavUtils
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,6 +36,15 @@ class QuickJobsHome : AppCompatActivity() {
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = jobAdapter
+
+
+        val plusBtn = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.btn_plus);
+        plusBtn.setOnClickListener{
+            val intent = Intent(this, AddService::class.java )
+            startActivity(intent)
+        }
+
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -76,4 +87,5 @@ class QuickJobsHome : AppCompatActivity() {
 
         override fun getItemCount() = jobArrayList.size
     }
+
 }
