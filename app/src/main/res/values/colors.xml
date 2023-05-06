@@ -4,7 +4,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="background_color" tools:ignore="ReferenceType">@drawable/gradient1</color>
     <color name="start_color">#2F80ED</color>
     <color name="mid_color">#20BDFF</color>
     <color name="end_color">#56CCF2</color>
