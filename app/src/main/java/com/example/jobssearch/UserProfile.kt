@@ -1,6 +1,8 @@
 package com.example.jobssearch
 
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.jobssearch.data.MainDataSource
 import com.example.jobssearch.ui.login.SignIn
 import kotlinx.coroutines.launch
+import java.io.File
 
 class UserProfile : AppCompatActivity() {
     var edtName : EditText? = null
@@ -30,16 +33,40 @@ class UserProfile : AppCompatActivity() {
         edtName = findViewById(R.id.txt_name)
         edtEmail = findViewById(R.id.edt_email)
         edtPassword = findViewById(R.id.edt_password)
+        val imgProfilePhoto = findViewById<ImageView>(R.id.img_profile_photo)
 
         when (MainDataSource.signedIn) {
             MainDataSource.LoginStatus.NOT_LOGGED_IN -> finish()
             MainDataSource.LoginStatus.SEEKER -> {
                 edtName?.setText(MainDataSource.userSeeker!!.name, TextView.BufferType.EDITABLE)
                 edtEmail?.setText(MainDataSource.userSeeker!!.email, TextView.BufferType.EDITABLE)
+
+                if (MainDataSource.userSeeker!!.profilePhoto != "") {
+                    val imgFile = File(this.filesDir, MainDataSource.userSeeker!!.profilePhoto)
+                    if (imgFile.exists()) {
+                        val logo = BitmapFactory.decodeFile(imgFile.absolutePath)
+                        imgProfilePhoto.setImageBitmap(logo)
+                    }
+                }
+                else {
+                    imgProfilePhoto.setImageResource(R.drawable.ic_baseline_person_24)
+                }
             }
             MainDataSource.LoginStatus.PROVIDER -> {
                 edtName?.setText(MainDataSource.userProvider!!.companyName, TextView.BufferType.EDITABLE)
                 edtEmail?.setText(MainDataSource.userProvider!!.email, TextView.BufferType.EDITABLE)
+
+                if (MainDataSource.userProvider!!.logo != "") {
+                    val imgFile = File(this.filesDir, MainDataSource.userProvider!!.logo)
+                    if (imgFile.exists()) {
+                        val logo = BitmapFactory.decodeFile(imgFile.absolutePath)
+                        imgProfilePhoto.setImageBitmap(logo)
+                        imgProfilePhoto.imageTintList = null
+                    }
+                }
+                else {
+                    imgProfilePhoto.setImageResource(R.drawable.baseline_apartment_24)
+                }
             }
         }
 
