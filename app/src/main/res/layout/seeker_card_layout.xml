@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/img_logo"
             android:layout_marginLeft="16dp"
-            android:text="Emlopyee Name"
+            android:text="Employee Name"
             android:textColor="@color/light_blue_900"
             android:textStyle="bold"
             android:textSize="18sp"/>
