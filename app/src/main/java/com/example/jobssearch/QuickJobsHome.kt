@@ -136,7 +136,7 @@ class QuickJobsHome : AppCompatActivity() {
                 txtLocation = view.findViewById<TextView>(R.id.txt_location)
                 txtRate = view.findViewById<TextView>(R.id.txt_rate)
                 txtDescription = view.findViewById<TextView>(R.id.txt_company_desc)
-                imgLogo = view.findViewById(R.id.btn_logo_upload)
+                imgLogo = view.findViewById(R.id.img_logo)
             }
 
             fun bind(service: Service) {

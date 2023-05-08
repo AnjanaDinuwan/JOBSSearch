@@ -199,11 +199,10 @@ object MainDataSource {
     suspend fun addNewService(context: Context,logoUri: Uri, name: String, email: String, address: String,rate: String,skills: String, callback: (Boolean) -> Unit) {
 
 
-        Log.d("Something", "here - Provider")
         val logoUrl = UUID.randomUUID().toString()
         moveFile(context, logoUri, logoUrl)
 
-        val service = Service(0, name, email, address , rate, skills,"" )
+        val service = Service(0, name, email, address , rate, skills,logoUrl )
         serviceDao?.insertService(service)
         callback(true)
     }
