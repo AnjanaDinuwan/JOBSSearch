@@ -20,5 +20,8 @@ interface ServiceDao {
     @Query("SELECT * FROM services WHERE id = :id")
     suspend fun getService(id: Int): Service
 
-
+    @Query("SELECT * FROM services " +
+            "WHERE skills LIKE '%' || :search || '%'" +
+            "   OR name LIKE '%' || :search || '%'")
+    suspend fun searchQuery(search: String): List<Service>
 }
