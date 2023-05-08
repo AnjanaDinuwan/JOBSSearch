@@ -1,6 +1,5 @@
 package com.example.jobssearch
 
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -34,7 +33,7 @@ class AddService : AppCompatActivity() {
         edtRate = findViewById(R.id.contact)
         edtSkills = findViewById(R.id.edt_description)
 
-        val btnService = findViewById<Button>(R.id.btn_register)
+        val btnService = findViewById<Button>(R.id.btn_add_job)
 
         btnService.setOnClickListener {
             val name: String = edtName?.text.toString() ?: ""

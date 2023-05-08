@@ -1,8 +1,10 @@
 package com.example.jobssearch
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
 import androidx.activity.result.PickVisualMediaRequest
@@ -10,6 +12,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.NavUtils
 import androidx.lifecycle.lifecycleScope
 import com.example.jobssearch.data.MainDataSource
+import com.example.jobssearch.ui.login.SignIn
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -87,6 +90,11 @@ class UserProfile : AppCompatActivity() {
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.top_update_profile, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
     fun updateCallback() {
         finish()
     }
@@ -102,6 +110,13 @@ class UserProfile : AppCompatActivity() {
                 } else {
                     NavUtils.navigateUpFromSameTask(this)
                 }
+                true
+            }
+            R.id.action_signout -> {
+                MainDataSource.signOut()
+                val intent = Intent(this@UserProfile, SignIn::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
                 true
             }
             else -> super.onOptionsItemSelected(item)

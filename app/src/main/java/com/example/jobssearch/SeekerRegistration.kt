@@ -10,11 +10,9 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.result.registerForActivityResult
 import androidx.core.app.NavUtils
 import androidx.lifecycle.lifecycleScope
 import com.example.jobssearch.data.MainDataSource
@@ -58,7 +56,7 @@ class SeekerRegistration : AppCompatActivity() {
             pickCVFile.launch(intent)
         }
 
-        val btnRegister = findViewById<Button>(R.id.btn_register)
+        val btnRegister = findViewById<Button>(R.id.btn_add_job)
         btnRegister.setOnClickListener {
             val name: String = edtName?.text.toString() ?: ""
             if (name == "") {

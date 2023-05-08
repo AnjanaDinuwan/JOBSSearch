@@ -14,5 +14,11 @@ interface ServiceDao {
     @Insert
     suspend fun insertService(s: Service)
 
+    @Query("SELECT * FROM services")
+    suspend fun getAll(): List<Service>
+
+    @Query("SELECT * FROM services WHERE id = :id")
+    suspend fun getService(id: Int): Service
+
 
 }

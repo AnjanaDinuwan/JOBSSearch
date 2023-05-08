@@ -9,12 +9,20 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.app.NavUtils
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.jobssearch.data.MainDataSource
+import com.example.jobssearch.data.model.Provider
+import com.example.jobssearch.data.model.Service
+import kotlinx.coroutines.launch
 
 
 class QuickJobsHome : AppCompatActivity() {
+
+    var jobAdapter = JobAdapter(this, listOf()) { id -> onServiceCardClick(id) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quick_jobs_home)
@@ -24,27 +32,27 @@ class QuickJobsHome : AppCompatActivity() {
         supportActionBar?.elevation = 0.0F
 
         val recyclerView = findViewById<RecyclerView>(R.id.rv_jobs)
-        val tList = ArrayList<Int>()
-        tList.add(1)
-        tList.add(2)
-        tList.add(3)
-        tList.add(4)
-        val jobAdapter = QuickJobsHome.JobAdapter(this, tList){-> onServiceCardClick() }
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = jobAdapter
 
-        val plusBtn = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.btn_plus);
-        plusBtn.setOnClickListener{
-            val intent = Intent(this, AddService::class.java )
+        lifecycleScope.launch {
+            MainDataSource.getAllServices { result -> providerCallback(result) }
+        }
+
+        val plusBtn =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.btn_plus);
+        plusBtn.setOnClickListener {
+            val intent = Intent(this, AddService::class.java)
             startActivity(intent)
         }
 
 
     }
 
-     fun onServiceCardClick() {
+    fun onServiceCardClick(id: Int) {
         val intent = Intent(this, QuickJobHire::class.java)
+        intent.putExtra("SERVICES_ID", id)
         startActivity(intent)
     }
 
@@ -67,35 +75,68 @@ class QuickJobsHome : AppCompatActivity() {
         }
     }
 
+    fun providerCallback(dataset: List<Service>) {
+        jobAdapter.dataset = dataset
+        jobAdapter.notifyDataSetChanged()
+    }
+
     class JobAdapter(
         private val context: Context,
-        private val jobArrayList: ArrayList<Int>,
-        val listener: () -> Unit
+        var dataset: List<Service>,
+        val callback: (Int) -> Unit
     ) :
         RecyclerView.Adapter<JobAdapter.ViewHolder>() {
 
-        class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            init {
+        class ViewHolder(view: View, private val context: Context) : RecyclerView.ViewHolder(view) {
+            val txtproviderName: TextView
+            val txtLocation: TextView
+            val txtRate: TextView
+            val txtDescription: TextView
+            //          val imgLogo: ImageView
 
+            init {
+                txtproviderName = view.findViewById<TextView>(R.id.txt_name)
+                txtLocation = view.findViewById<TextView>(R.id.txt_location)
+                txtRate = view.findViewById<TextView>(R.id.txt_rate)
+                txtDescription = view.findViewById<TextView>(R.id.txt_company_desc)
+                //               imgLogo = view.findViewById(R.id.img_logo)
             }
+
+            fun bind(service: Service) {
+                txtproviderName.text = service.name
+                txtLocation.text = service.address
+                txtRate.text = service.rate
+                txtDescription.text = service.skills
+
+//                if (service.logo != "") {
+//                    val imgFile = File(context.filesDir, service.logo)
+//                    if (imgFile.exists()) {
+//                        val logo = BitmapFactory.decodeFile(imgFile.absolutePath)
+//                        imgLogo.setImageBitmap(logo)
+//                    }
+//                } else {
+//                    imgLogo.setImageResource(R.drawable.ic_baseline_person_24)
+//                }
+            }
+
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.activity_quickjob_card_layout, parent, false)
-
-            return ViewHolder(view)
+            return ViewHolder(view, context)
         }
+
+        override fun getItemCount() = dataset.size
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
-            holder.itemView.setOnClickListener{
-                listener()
+            val service = dataset[position]
+            holder.bind(service)
+            holder.itemView.setOnClickListener {
+                callback(service.id)
             }
-
         }
 
-        override fun getItemCount() = jobArrayList.size
-    }
 
+    }
 }

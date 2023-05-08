@@ -17,7 +17,7 @@
 
 
         <TextView
-            android:id="@+id/txt_job_name"
+            android:id="@+id/edt_job_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Job Name"
@@ -29,7 +29,7 @@
             android:id="@+id/txt_salary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txt_job_name"
+            android:layout_below="@id/edt_job_name"
             android:layout_marginTop="5dp"
             android:text="Salary"
             android:textColor="@color/white"
