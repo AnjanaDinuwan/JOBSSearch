@@ -2,6 +2,7 @@ package com.example.jobssearch
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,15 +10,16 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.app.NavUtils
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jobssearch.data.MainDataSource
-import com.example.jobssearch.data.model.Provider
 import com.example.jobssearch.data.model.Service
 import kotlinx.coroutines.launch
+import java.io.File
 
 
 class QuickJobsHome : AppCompatActivity() {
@@ -92,14 +94,14 @@ class QuickJobsHome : AppCompatActivity() {
             val txtLocation: TextView
             val txtRate: TextView
             val txtDescription: TextView
-            //          val imgLogo: ImageView
+            val imgLogo: ImageView
 
             init {
-                txtproviderName = view.findViewById<TextView>(R.id.txt_name)
+                txtproviderName = view.findViewById<TextView>(R.id.emp_name)
                 txtLocation = view.findViewById<TextView>(R.id.txt_location)
                 txtRate = view.findViewById<TextView>(R.id.txt_rate)
                 txtDescription = view.findViewById<TextView>(R.id.txt_company_desc)
-                //               imgLogo = view.findViewById(R.id.img_logo)
+                imgLogo = view.findViewById(R.id.btn_logo_upload)
             }
 
             fun bind(service: Service) {
@@ -108,15 +110,15 @@ class QuickJobsHome : AppCompatActivity() {
                 txtRate.text = service.rate
                 txtDescription.text = service.skills
 
-//                if (service.logo != "") {
-//                    val imgFile = File(context.filesDir, service.logo)
-//                    if (imgFile.exists()) {
-//                        val logo = BitmapFactory.decodeFile(imgFile.absolutePath)
-//                        imgLogo.setImageBitmap(logo)
-//                    }
-//                } else {
-//                    imgLogo.setImageResource(R.drawable.ic_baseline_person_24)
-//                }
+                if (service.logo != "") {
+                    val imgFile = File(context.filesDir, service.logo)
+                    if (imgFile.exists()) {
+                        val logo = BitmapFactory.decodeFile(imgFile.absolutePath)
+                        imgLogo.setImageBitmap(logo)
+                    }
+                } else {
+                    imgLogo.setImageResource(R.drawable.ic_baseline_person_24)
+                }
             }
 
         }

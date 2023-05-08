@@ -1,12 +1,16 @@
 package com.example.jobssearch
 
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.NavUtils
 import androidx.lifecycle.lifecycleScope
 import com.example.jobssearch.data.MainDataSource
@@ -14,6 +18,7 @@ import kotlinx.coroutines.launch
 
 class AddService : AppCompatActivity() {
 
+    var logoUri : Uri? = null
     var edtName : EditText? = null
     var edtEmail : EditText? = null
     var edtAddress : EditText? = null
@@ -27,11 +32,16 @@ class AddService : AppCompatActivity() {
         supportActionBar?.setTitle(R.string.Add_Service)
         supportActionBar?.elevation = 0.0F
 
-        edtName = findViewById(R.id.txt_name)
+        edtName = findViewById(R.id.emp_name)
         edtEmail = findViewById(R.id.edt_email)
         edtAddress = findViewById(R.id.edt_address)
         edtRate = findViewById(R.id.contact)
         edtSkills = findViewById(R.id.edt_description)
+
+        val btnLogoUpload = findViewById<LinearLayout>(R.id.btn_logo_upload)
+        btnLogoUpload.setOnClickListener {
+            pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+        }
 
         val btnService = findViewById<Button>(R.id.btn_add_job)
 
@@ -66,13 +76,20 @@ class AddService : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            if (logoUri == null) {
+                Toast.makeText(this, "Profile photo not chosen", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
 
 
             val context = this
 
             lifecycleScope.launch {
                 MainDataSource.addNewService(
+
                     context,
+                    logoUri!!,
                     name,
                     email,
                     address,
@@ -85,6 +102,16 @@ class AddService : AppCompatActivity() {
         }
 
 
+    }
+
+    val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+        if (uri != null) {
+            Log.d("PhotoPicker", "Selecter URI: $uri")
+            logoUri = uri
+        }
+        else {
+            Log.d("PhotoPicker", "No media selected")
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

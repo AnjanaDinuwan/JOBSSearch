@@ -87,7 +87,7 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/txt_name"
+        android:id="@+id/emp_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -117,7 +117,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_name" />
+        app:layout_constraintTop_toBottomOf="@+id/emp_name" />
 
     <EditText
         android:id="@+id/edt_address"

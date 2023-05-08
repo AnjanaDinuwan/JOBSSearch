@@ -13,5 +13,6 @@ data class Service(
     val address:String,
     val rate:String,
     val skills:String,
+    val logo:String,
 
 )

@@ -5,10 +5,14 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.example.jobssearch.data.model.Job
+import com.example.jobssearch.data.model.Provider
 import com.example.jobssearch.data.model.Seeker
 
 @Dao
 interface SeekerDao {
+
+    @Query("SELECT * FROM seekers")
+    suspend fun getAll(): List<Seeker>
     @Insert
     suspend fun insertSeeker(s: Seeker)
 
@@ -19,5 +23,9 @@ interface SeekerDao {
 
     @Update
     fun updateSeeker(seeker: Seeker)
+
+    @Query("SELECT * FROM seekers WHERE id = :id")
+    suspend fun getSeeker(id: Int): Seeker
+
 
 }

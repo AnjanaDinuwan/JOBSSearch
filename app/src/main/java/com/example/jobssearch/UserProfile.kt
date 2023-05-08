@@ -27,7 +27,7 @@ class UserProfile : AppCompatActivity() {
         supportActionBar?.setTitle(R.string.update_profile)
         supportActionBar?.elevation = 0.0F
 
-        edtName = findViewById(R.id.txt_name)
+        edtName = findViewById(R.id.emp_name)
         edtEmail = findViewById(R.id.edt_email)
         edtPassword = findViewById(R.id.edt_password)
 

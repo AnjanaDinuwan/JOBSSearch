@@ -22,7 +22,7 @@
             android:backgroundTint="#E9E9E9"/>
 
         <TextView
-            android:id="@+id/txt_name"
+            android:id="@+id/emp_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/img_logo"
@@ -41,7 +41,7 @@
             android:layout_toRightOf="@id/img_logo"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="5dp"
-            android:layout_below="@+id/txt_name" />
+            android:layout_below="@+id/emp_name" />
 
         <TextView
             android:id="@+id/txt_location"
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/img_location_icon"
             android:layout_alignBaseline="@id/img_location_icon"
-            android:layout_below="@id/txt_name"
+            android:layout_below="@id/emp_name"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:text="Location"

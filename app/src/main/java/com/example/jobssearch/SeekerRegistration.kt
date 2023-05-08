@@ -36,7 +36,7 @@ class SeekerRegistration : AppCompatActivity() {
         supportActionBar?.setTitle(R.string.empty)
         supportActionBar?.elevation = 0.0F
 
-        edtName = findViewById(R.id.txt_name)
+        edtName = findViewById(R.id.emp_name)
         edtEmail = findViewById(R.id.edt_email)
         edtAddress = findViewById(R.id.edt_address)
         edtPassword = findViewById(R.id.edt_password)

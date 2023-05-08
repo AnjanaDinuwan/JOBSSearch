@@ -20,10 +20,10 @@
             android:id="@+id/img_logo"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:backgroundTint="#E9E9E9"/>
+            android:backgroundTint="#E9E9E9" />
 
         <TextView
-            android:id="@+id/txt_name"
+            android:id="@+id/emp_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/img_logo"
@@ -33,23 +33,12 @@
             android:textStyle="bold"
             android:textSize="18sp"/>
 
-        <TextView
-            android:id="@+id/edt_job_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/img_logo"
-            android:layout_below="@id/txt_name"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="5dp"
-            android:text="Position"
-            android:textColor="@color/light_blue_900"
-            android:textSize="16sp"/>
 
         <Button
             android:id="@+id/txt_cv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_job_name"
+            android:layout_below="@+id/emp_name"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@id/img_logo"
@@ -62,12 +51,12 @@
             android:id="@+id/txt_contact"
             android:layout_width="107dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edt_job_name"
+            android:layout_below="@+id/emp_name"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginLeft="138dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginLeft="139dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="9dp"
+            android:layout_marginEnd="25dp"
             android:layout_toEndOf="@+id/txt_cv"
             android:layout_toRightOf="@id/img_logo"
             android:background="@drawable/button_gradient_white"

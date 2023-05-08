@@ -66,7 +66,7 @@ class QuickJobHire : AppCompatActivity() {
 
     fun serviceCallback(service: Service) {
 
-        var txtName = findViewById<TextView>(R.id.txt_name)
+        var txtName = findViewById<TextView>(R.id.emp_name)
         var txtRate = findViewById<TextView>(R.id.txt_rate)
         var txtSkills = findViewById<TextView>(R.id.txt_skills)
 

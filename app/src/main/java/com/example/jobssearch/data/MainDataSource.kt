@@ -114,6 +114,11 @@ object MainDataSource {
         callback(result)
     }
 
+    suspend fun getAllSeekers(callback: (List<Seeker>) -> Unit) {
+        var result = seekerDao?.getAll() ?: listOf()
+        callback(result)
+    }
+
     suspend fun getAllServices(callback: (List<Service>) -> Unit) {
         var result = serviceDao?.getAll() ?: listOf()
         callback(result)
@@ -143,6 +148,7 @@ object MainDataSource {
             "Test",
             "100",
             "example.com",
+            "",
         )
         callback(result)
     }
@@ -190,10 +196,14 @@ object MainDataSource {
         callback(true)
     }
 
-    suspend fun addNewService(context: Context, name: String, email: String, address: String,rate: String,skills: String, callback: (Boolean) -> Unit) {
+    suspend fun addNewService(context: Context,logoUri: Uri, name: String, email: String, address: String,rate: String,skills: String, callback: (Boolean) -> Unit) {
 
 
-        val service = Service(0, name, email, address , rate, skills )
+        Log.d("Something", "here - Provider")
+        val logoUrl = UUID.randomUUID().toString()
+        moveFile(context, logoUri, logoUrl)
+
+        val service = Service(0, name, email, address , rate, skills,"" )
         serviceDao?.insertService(service)
         callback(true)
     }

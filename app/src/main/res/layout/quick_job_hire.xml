@@ -32,7 +32,7 @@
 
 
     <TextView
-        android:id="@+id/txt_name"
+        android:id="@+id/emp_name"
         android:layout_width="300dp"
         android:layout_height="30dp"
         android:layout_marginTop="20dp"
@@ -61,7 +61,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/txt_name" />
+        app:layout_constraintTop_toBottomOf="@+id/emp_name" />
 
     <TextView
         android:id="@+id/txt_skills"
@@ -132,7 +132,7 @@
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_name" />
+        app:layout_constraintTop_toBottomOf="@+id/emp_name" />
 
     <TextView
         android:id="@+id/textView2"

@@ -2,20 +2,34 @@ package com.example.jobssearch
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.RelativeLayout
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NavUtils
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.jobssearch.data.MainDataSource
+import com.example.jobssearch.data.model.Job
+import com.example.jobssearch.data.model.Provider
+import com.example.jobssearch.data.model.Seeker
+import kotlinx.coroutines.launch
+import java.io.File
+import javax.xml.transform.ErrorListener
 
 
 class SeekerHome : AppCompatActivity() {
+    var seekerAdapter = SeekerAdapter(this, listOf())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seeker_home)
@@ -25,22 +39,16 @@ class SeekerHome : AppCompatActivity() {
         supportActionBar?.elevation = 0.0F
 
         val recyclerView = findViewById<RecyclerView>(R.id.rv_jobs)
-        val tList = ArrayList<Int>()
-        tList.add(1)
-        tList.add(2)
-        tList.add(3)
-        tList.add(4)
-        val seekerAdapter = SeekerHome.SeekerAdapter(this, tList) { -> onSeekerCardClick() }
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = seekerAdapter
 
+        lifecycleScope.launch {
+            MainDataSource.getAllSeekers { result -> seekerCallback(result) }
+        }
     }
 
-     fun onSeekerCardClick() {
-         val intent = Intent(this, UpdatePosition::class.java)
-         startActivity(intent)
-    }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
@@ -60,35 +68,54 @@ class SeekerHome : AppCompatActivity() {
         }
     }
 
+    fun seekerCallback(dataset: List<Seeker>) {
+        seekerAdapter.dataset = dataset
+        seekerAdapter.notifyDataSetChanged()
+    }
 
-    class SeekerAdapter(private val context: Context, private val seekerArrayList: ArrayList<Int>, private val listener: () -> Unit) :
+    class SeekerAdapter(private val context: Context, var dataset: List<Seeker>) :
         RecyclerView.Adapter<SeekerAdapter.ViewHolder>() {
-
-        class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            var seekerCard: RelativeLayout
+        class ViewHolder(view: View, private val context: Context) : RecyclerView.ViewHolder(view) {
+            val txtSeekerName : TextView
+            val imgLogo : ImageView
             init {
-                seekerCard = view.findViewById<RelativeLayout>(R.id.seeker_card)
+                txtSeekerName = view.findViewById<TextView>(R.id.emp_name)
+                imgLogo = view.findViewById(R.id.img_logo)
             }
 
+            fun bind(seeker : Seeker) {
+                txtSeekerName.text = seeker.name
+
+
+                if (seeker.profilePhoto != "") {
+                    val imgFile = File(context.filesDir, seeker.profilePhoto)
+                    if (imgFile.exists()) {
+                        val logo = BitmapFactory.decodeFile(imgFile.absolutePath)
+                        imgLogo.setImageBitmap(logo)
+                    }
+                }
+                else {
+                    imgLogo.setImageResource(R.drawable.ic_baseline_person_24)
+                }
+            }
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.seeker_card_layout, parent, false)
 
-            return ViewHolder(view)
+            return ViewHolder(view, context);
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            holder.seekerCard.setOnClickListener{
-                listener()
-            }
+            val seek = dataset[position]
+            holder.bind(seek)
+
         }
 
-        override fun getItemCount() = seekerArrayList.size
+        override fun getItemCount(): Int {
+            return dataset.size
+        }
+
     }
 }
-
-
-
-
