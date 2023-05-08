@@ -6,10 +6,7 @@ import com.example.jobssearch.data.dao.JobDao
 import com.example.jobssearch.data.dao.ProviderDao
 import com.example.jobssearch.data.dao.SeekerDao
 import com.example.jobssearch.data.dao.ServiceDao
-import com.example.jobssearch.data.model.Job
-import com.example.jobssearch.data.model.Provider
-import com.example.jobssearch.data.model.Seeker
-import com.example.jobssearch.data.model.Service
+import com.example.jobssearch.data.model.*
 
 @Database(entities= [Job::class, Provider::class, Seeker::class, Service::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {

@@ -4,11 +4,14 @@ import android.content.Context
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.app.NavUtils
@@ -42,12 +45,39 @@ class JobsSearch : AppCompatActivity() {
             MainDataSource.getAllJobs { result -> allJobsCallback(result)}
         }
 
+        val edtSearch = findViewById<EditText>(R.id.edt_search)
         swipeRefresh = findViewById(R.id.swiperefresh)
         swipeRefresh?.setOnRefreshListener {
             lifecycleScope.launch {
-                MainDataSource.getAllJobs { result -> allJobsCallback(result)}
+                val query = edtSearch.text.toString()
+                if (query == "") {
+                    MainDataSource.getAllJobs { result -> allJobsCallback(result)}
+                }
+                else {
+                    MainDataSource.searchJob(query) { result -> allJobsCallback(result) }
+                }
             }
         }
+
+        edtSearch.addTextChangedListener( object: TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                val query = s.toString()
+                lifecycleScope.launch {
+                    if (query == "") {
+                        MainDataSource.getAllJobs { result -> allJobsCallback(result)}
+                    }
+                    else {
+                        MainDataSource.searchJob(query) { result -> allJobsCallback(result) }
+                    }
+                }
+            }
+
+        })
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

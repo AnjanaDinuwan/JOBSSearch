@@ -5,11 +5,14 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -42,9 +45,30 @@ class ProviderHome : AppCompatActivity() {
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = providerAdapter
 
+        val edtSearch = findViewById<EditText>(R.id.edt_search)
+
         lifecycleScope.launch {
             MainDataSource.getAllProviders { result -> providerCallback(result) }
         }
+
+        edtSearch.addTextChangedListener( object: TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                val query = s.toString()
+                lifecycleScope.launch {
+                    if (query == "") {
+                        MainDataSource.getAllProviders { result -> providerCallback(result)}
+                    }
+                    else {
+                        MainDataSource.searchProvider(query) { result -> providerCallback(result) }
+                    }
+                }
+            }
+
+        })
     }
 
     fun onCompanyCardClick(id: Int) {
