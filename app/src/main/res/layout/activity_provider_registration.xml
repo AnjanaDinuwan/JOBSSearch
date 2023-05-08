@@ -136,7 +136,7 @@
         android:layout_margin="16dp"
         android:ems="10"
         android:hint="Confirm Password"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_password" />
@@ -155,7 +155,7 @@
         android:ems="10"
         android:hint="A small description"
         android:gravity="top"
-        android:inputType="textImeMultiLine"
+        android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_confirm_password" />

@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import com.example.jobssearch.data.MainDataSource
 import com.example.jobssearch.data.model.Job
 import com.example.jobssearch.data.model.Provider
 
@@ -28,4 +29,9 @@ interface ProviderDao {
 
     @Update
     suspend fun updateProvider(provider: Provider)
+
+    @Query("SELECT * FROM providers " +
+            "WHERE company_name LIKE '%' || :search || '%'" +
+            "   OR description LIKE '%' || :search || '%'")
+    suspend fun searchQuery(search: String): List<Provider>
 }

@@ -20,4 +20,13 @@ interface JobDao {
             "WHERE jobs.company_id = providers.id")
     suspend fun getJobWithCompany(): List<MainDataSource.JobCompanyInfo>
 
+    @Query("SELECT jobs.id, jobs.name, jobs.description, providers.company_name, " +
+            "providers.logo " +
+            "FROM jobs " +
+            "INNER JOIN providers " +
+            "ON jobs.company_id = providers.id " +
+            "WHERE jobs.name LIKE '%' || :search || '%'" +
+            "   OR jobs.description LIKE '%' || :search || '%'")
+    suspend fun searchQuery(search: String): List<MainDataSource.JobCompanyInfo>
+
 }

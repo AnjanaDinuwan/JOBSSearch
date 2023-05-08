@@ -228,6 +228,21 @@ object MainDataSource {
         }
     }
 
+    suspend fun searchJob(query: String, callback: (List<JobCompanyInfo>) -> Unit) {
+        val result = jobDao?.searchQuery(query) ?: listOf()
+        callback(result)
+    }
+
+    suspend fun searchProvider(query: String, callback: (List<Provider>) -> Unit) {
+        val result = providerDao?.searchQuery(query) ?: listOf()
+        callback(result)
+    }
+
+    suspend fun searchService(query: String, callback: (List<Service>) -> Unit) {
+        val result = serviceDao?.searchQuery(query) ?: listOf()
+        callback(result)
+    }
+
     data class JobCompanyInfo (
         @ColumnInfo(name = "id") val id : Int?,
         @ColumnInfo(name = "company_name") val companyName : String?,

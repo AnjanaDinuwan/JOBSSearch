@@ -1,23 +1,29 @@
 package com.example.jobssearch
 
+import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.jobssearch.data.MainDataSource
 import com.example.jobssearch.ui.login.SignIn
 import kotlinx.coroutines.launch
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
-    var recommendedJobsAdapter = RecommendedJobsAdapter(listOf<MainDataSource.JobCompanyInfo>())
+    var recommendedJobsAdapter = RecommendedJobsAdapter(this, listOf<MainDataSource.JobCompanyInfo>())
+    var swipeRefresh : SwipeRefreshLayout? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -73,19 +79,28 @@ class MainActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
+
+        swipeRefresh = findViewById(R.id.swiperefresh)
+        swipeRefresh?.setOnRefreshListener {
+            lifecycleScope.launch {
+                MainDataSource.getRecommendedJobs { dataset -> recommendedJobsCallback(dataset) }
+            }
+        }
     }
 
     fun recommendedJobsCallback(dataset: List<MainDataSource.JobCompanyInfo>) {
+        swipeRefresh?.isRefreshing = false
         recommendedJobsAdapter.dataset = dataset
         recommendedJobsAdapter.notifyDataSetChanged()
     }
 
-    class RecommendedJobsAdapter(var dataset: List<MainDataSource.JobCompanyInfo>) :
+    class RecommendedJobsAdapter(private val context: Context, var dataset: List<MainDataSource.JobCompanyInfo>) :
         RecyclerView.Adapter<RecommendedJobsAdapter.ViewHolder>() {
-        class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        class ViewHolder(view: View, private val context: Context) : RecyclerView.ViewHolder(view) {
             val txtCompanyName : TextView
             val txtJobName : TextView
             val txtDescription : TextView
+            val imgLogo = view.findViewById<ImageView>(R.id.img_logo)
             init {
                 txtCompanyName = view.findViewById<TextView>(R.id.txt_company_name)
                 txtJobName = view.findViewById<TextView>(R.id.edt_job_name)
@@ -96,6 +111,17 @@ class MainActivity : AppCompatActivity() {
                 txtJobName.text = job.name
                 txtCompanyName.text = job.companyName
                 txtDescription.text = job.description
+
+                if (job.logo != "") {
+                    val imgFile = File(context.filesDir, job.logo)
+                    if (imgFile.exists()) {
+                        val logo = BitmapFactory.decodeFile(imgFile.absolutePath)
+                        imgLogo.setImageBitmap(logo)
+                    }
+                }
+                else {
+                    imgLogo.setImageResource(R.drawable.baseline_apartment_24)
+                }
             }
         }
 
@@ -103,7 +129,7 @@ class MainActivity : AppCompatActivity() {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.job_card_layout, parent, false)
 
-            return ViewHolder(view);
+            return ViewHolder(view, context);
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
