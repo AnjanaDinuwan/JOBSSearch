@@ -4,9 +4,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.widget.*
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.NavUtils
+import androidx.lifecycle.lifecycleScope
+import com.example.jobssearch.data.MainDataSource
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class UserProfile : AppCompatActivity() {
+    var edtName : EditText? = null
+    var edtEmail : EditText? = null
+    var edtPassword : EditText? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
@@ -14,6 +24,71 @@ class UserProfile : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setTitle(R.string.update_profile)
         supportActionBar?.elevation = 0.0F
+
+        edtName = findViewById(R.id.edt_name)
+        edtEmail = findViewById(R.id.edt_email)
+        edtPassword = findViewById(R.id.edt_password)
+
+        when (MainDataSource.signedIn) {
+            MainDataSource.LoginStatus.NOT_LOGGED_IN -> finish()
+            MainDataSource.LoginStatus.SEEKER -> {
+                edtName?.setText(MainDataSource.userSeeker!!.name, TextView.BufferType.EDITABLE)
+                edtEmail?.setText(MainDataSource.userSeeker!!.email, TextView.BufferType.EDITABLE)
+            }
+            MainDataSource.LoginStatus.PROVIDER -> {
+                edtName?.setText(MainDataSource.userProvider!!.companyName, TextView.BufferType.EDITABLE)
+                edtEmail?.setText(MainDataSource.userProvider!!.email, TextView.BufferType.EDITABLE)
+            }
+        }
+
+        val btnPhotoUpload = findViewById<Button>(R.id.btn_change_photo)
+        btnPhotoUpload.setOnClickListener {
+            pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+        }
+
+        val updateBtn = findViewById<Button>(R.id.btn_update)
+        updateBtn.setOnClickListener {
+            val name: String = edtName?.text.toString() ?: ""
+            if (name == "") {
+                Toast.makeText(this, "Name cannot be null", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val email: String = edtEmail?.text.toString() ?: ""
+            if (email == "") {
+                Toast.makeText(this, "Email cannot be null", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            var password: String = edtPassword?.text.toString() ?: ""
+            if (password == "") {
+                password = when (MainDataSource.signedIn) {
+                    MainDataSource.LoginStatus.NOT_LOGGED_IN -> ""
+                    MainDataSource.LoginStatus.SEEKER -> MainDataSource.userSeeker!!.password
+                    MainDataSource.LoginStatus.PROVIDER -> MainDataSource.userProvider!!.password
+                }
+            }
+
+            when (MainDataSource.signedIn) {
+                MainDataSource.LoginStatus.NOT_LOGGED_IN -> finish()
+                MainDataSource.LoginStatus.SEEKER -> {
+                    lifecycleScope.launch {
+                        Log.d("Something", "$name, $email, $password")
+                        MainDataSource.updateSeeker(name, email, password) { -> updateCallback() }
+                    }
+                }
+                MainDataSource.LoginStatus.PROVIDER -> {
+                    lifecycleScope.launch {
+                        MainDataSource.updateProvider(name, email, password) { -> updateCallback() }
+                    }
+                }
+            }
+        }
+
+    }
+
+    fun updateCallback() {
+        finish()
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
@@ -30,6 +105,16 @@ class UserProfile : AppCompatActivity() {
                 true
             }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+        if (uri != null) {
+            Log.d("PhotoPicker", "Selecter URI: $uri")
+//            photoUri = uri
+        }
+        else {
+            Log.d("PhotoPicker", "No media selected")
         }
     }
 }

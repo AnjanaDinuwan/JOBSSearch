@@ -14,6 +14,8 @@ import com.example.jobssearch.data.model.Job
 import com.example.jobssearch.data.model.Provider
 import com.example.jobssearch.data.model.Seeker
 import com.example.jobssearch.data.model.Service
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
@@ -22,12 +24,18 @@ import java.util.UUID
 
 object MainDataSource {
 
-    var signedIn: Boolean = false
+    enum class LoginStatus {
+        NOT_LOGGED_IN, SEEKER, PROVIDER
+    }
+
+    var signedIn: LoginStatus = LoginStatus.NOT_LOGGED_IN
     var db: AppDatabase? = null
     var jobDao: JobDao? = null
     var providerDao: ProviderDao? = null
     var seekerDao: SeekerDao? = null
     var serviceDao: ServiceDao? = null
+    var userSeeker: Seeker? = null
+    var userProvider: Provider? = null
 
     var seekers : MutableList<Seeker> = mutableListOf(
         Seeker(0,"Anjana Munasinghe", "Anjana", "password", "anjana@gmail.com","",""),
@@ -54,14 +62,22 @@ object MainDataSource {
         serviceDao = database.serviceDao()
     }
 
-    fun validateSignIn(username: String, password:String): Boolean {
+    suspend fun validateSignIn(username: String, password:String): Boolean {
         Log.d("Something", username + ", " + password)
-        for (seeker in seekers) {
-            if (seeker.username == username && seeker.password == password) {
-                signedIn = true
-                return true
-            }
+        val result1 = seekerDao?.authenticateSeeker(username, password)
+        if (result1 != null) {
+            signedIn = LoginStatus.SEEKER
+            userSeeker = result1
+            return true
         }
+
+        val result2 = providerDao?.authenticateProvider(username, password)
+        if (result2 != null) {
+            signedIn = LoginStatus.PROVIDER
+            userProvider = result2
+            return true
+        }
+
         return false
     }
 
@@ -128,7 +144,7 @@ object MainDataSource {
         val cvUrl = UUID.randomUUID().toString()
         moveFile(context, cvUri, cvUrl)
 
-        val seeker = Seeker(0, name, name, password, email, cvUrl, photoUrl)
+        val seeker = Seeker(0, name, email, password, email, cvUrl, photoUrl)
         seekerDao?.insertSeeker(seeker)
         callback(true)
     }
@@ -140,7 +156,7 @@ object MainDataSource {
         val logoUrl = UUID.randomUUID().toString()
         moveFile(context, logoUri, logoUrl)
 
-        val provider = Provider(0, password, email, name, name, logoUrl, address, description, address)
+        val provider = Provider(0, password, email, name, email, logoUrl, address, description, address)
         providerDao?.insertProvider(provider)
         callback(true)
     }
@@ -151,6 +167,26 @@ object MainDataSource {
         val service = Service(0, name, email, address , rate, skills )
         serviceDao?.insertService(service)
         callback(true)
+    }
+
+    suspend fun updateSeeker(name: String, email: String, password: String, callback: () -> Unit) {
+        withContext (Dispatchers.IO) {
+            val seeker =
+                userSeeker!!.copy(name = name, username = email, password = password, email = email)
+            seekerDao?.updateSeeker(seeker)
+            validateSignIn(seeker.username, seeker.password)
+            callback()
+        }
+    }
+
+    suspend fun updateProvider(name: String, email: String, password: String, callback: () -> Unit) {
+        withContext (Dispatchers.IO) {
+            val provider =
+                userProvider!!.copy(companyName = name, userName = email, password = password, email = email)
+            providerDao?.updateProvider(provider)
+            validateSignIn(provider.userName, provider.password)
+            callback()
+        }
     }
 
     data class JobCompanyInfo (
