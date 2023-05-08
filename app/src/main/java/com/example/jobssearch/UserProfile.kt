@@ -13,7 +13,6 @@ import androidx.core.app.NavUtils
 import androidx.lifecycle.lifecycleScope
 import com.example.jobssearch.data.MainDataSource
 import com.example.jobssearch.ui.login.SignIn
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class UserProfile : AppCompatActivity() {
@@ -28,7 +27,7 @@ class UserProfile : AppCompatActivity() {
         supportActionBar?.setTitle(R.string.update_profile)
         supportActionBar?.elevation = 0.0F
 
-        edtName = findViewById(R.id.edt_name)
+        edtName = findViewById(R.id.txt_name)
         edtEmail = findViewById(R.id.edt_email)
         edtPassword = findViewById(R.id.edt_password)
 

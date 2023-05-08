@@ -27,7 +27,7 @@ class AddService : AppCompatActivity() {
         supportActionBar?.setTitle(R.string.Add_Service)
         supportActionBar?.elevation = 0.0F
 
-        edtName = findViewById(R.id.edt_name)
+        edtName = findViewById(R.id.txt_name)
         edtEmail = findViewById(R.id.edt_email)
         edtAddress = findViewById(R.id.edt_address)
         edtRate = findViewById(R.id.contact)
