@@ -98,14 +98,12 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jobProviderEditText"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/jobProviderEditText" />
 
     <Button
         android:id="@+id/hireButton"
         android:layout_width="145dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="240dp"
         android:background="@drawable/button_gradient"
         android:gravity="center_horizontal"
         android:orientation="vertical"
@@ -113,26 +111,9 @@
         android:text="Hire"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/daysTextView2"
-        />
+        app:layout_constraintVertical_bias="0.559" />
 
-    <Button
-        android:id="@+id/contactButton"
-        android:layout_width="140dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/button_gradient_white"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:padding="10dp"
-        android:text="Contact"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintHorizontal_bias="0.34"
-        app:layout_constraintStart_toEndOf="@+id/hireButton"
-        app:layout_constraintTop_toBottomOf="@+id/daysTextView2"
-        app:layout_constraintVertical_bias="0.338" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

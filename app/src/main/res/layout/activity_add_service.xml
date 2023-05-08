@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_blue_500" >
+    android:background="@color/purple_300" >
 
     <TextView
         android:id="@+id/textView1"
@@ -62,6 +62,7 @@
         android:textSize="16sp"
         android:padding="10dp"
         android:textColorHint="@color/black"
+        android:textColor="@color/black"
         android:layout_margin="16dp"
         android:hint="Your Name"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,6 +78,7 @@
         android:textSize="16sp"
         android:padding="10dp"
         android:textColorHint="@color/black"
+        android:textColor="@color/black"
         android:layout_margin="16dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
@@ -93,14 +95,30 @@
         android:textSize="16sp"
         android:padding="10dp"
         android:textColorHint="@color/black"
+        android:textColor="@color/black"
         android:layout_margin="16dp"
-        android:hint="Postal Address"
+        android:hint="Location"
         android:inputType="textPostalAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_email" />
 
-
+    <EditText
+        android:id="@+id/contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner_rectangle"
+        android:backgroundTint="@color/light_blue_50"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:layout_margin="16dp"
+        android:hint="Rate Per Hour"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_address" />
 
 
 
@@ -113,6 +131,7 @@
         android:textSize="16sp"
         android:padding="10dp"
         android:textColorHint="@color/black"
+        android:textColor="@color/black"
         android:layout_margin="16dp"
         android:ems="10"
         android:hint="Add your Skills"
@@ -120,7 +139,7 @@
         android:inputType="textImeMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_address" />
+        app:layout_constraintTop_toBottomOf="@+id/contact" />
 
 
     <Button

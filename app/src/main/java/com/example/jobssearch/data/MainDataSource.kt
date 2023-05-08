@@ -2,15 +2,18 @@ package com.example.jobssearch.data
 
 import android.content.Context
 import android.net.Uri
+import android.provider.Telephony.Mms.Rate
 import android.util.Log
 import androidx.documentfile.provider.DocumentFile
 import androidx.room.ColumnInfo
 import com.example.jobssearch.data.dao.JobDao
 import com.example.jobssearch.data.dao.ProviderDao
 import com.example.jobssearch.data.dao.SeekerDao
+import com.example.jobssearch.data.dao.ServiceDao
 import com.example.jobssearch.data.model.Job
 import com.example.jobssearch.data.model.Provider
 import com.example.jobssearch.data.model.Seeker
+import com.example.jobssearch.data.model.Service
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
@@ -24,6 +27,7 @@ object MainDataSource {
     var jobDao: JobDao? = null
     var providerDao: ProviderDao? = null
     var seekerDao: SeekerDao? = null
+    var serviceDao: ServiceDao? = null
 
     var seekers : MutableList<Seeker> = mutableListOf(
         Seeker(0,"Anjana Munasinghe", "Anjana", "password", "anjana@gmail.com","",""),
@@ -47,6 +51,7 @@ object MainDataSource {
         jobDao = database.jobDao()
         providerDao = database.providerDao()
         seekerDao = database.seekerDao()
+        serviceDao = database.serviceDao()
     }
 
     fun validateSignIn(username: String, password:String): Boolean {
@@ -137,6 +142,14 @@ object MainDataSource {
 
         val provider = Provider(0, password, email, name, name, logoUrl, address, description, address)
         providerDao?.insertProvider(provider)
+        callback(true)
+    }
+
+    suspend fun addNewService(context: Context, name: String, email: String, address: String,rate: String,skills: String, callback: (Boolean) -> Unit) {
+
+
+        val service = Service(0, name, email, address , rate, skills )
+        serviceDao?.insertService(service)
         callback(true)
     }
 

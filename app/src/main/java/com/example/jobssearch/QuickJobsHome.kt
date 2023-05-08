@@ -29,7 +29,7 @@ class QuickJobsHome : AppCompatActivity() {
         tList.add(2)
         tList.add(3)
         tList.add(4)
-        val jobAdapter = QuickJobsHome.JobAdapter(this, tList) { -> onServiceCardClick() }
+        val jobAdapter = QuickJobsHome.JobAdapter(this, tList){-> onServiceCardClick() }
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = jobAdapter
@@ -40,13 +40,14 @@ class QuickJobsHome : AppCompatActivity() {
             startActivity(intent)
         }
 
+
     }
 
-    private fun onServiceCardClick() {
-
+     fun onServiceCardClick() {
         val intent = Intent(this, QuickJobHire::class.java)
         startActivity(intent)
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
@@ -69,7 +70,7 @@ class QuickJobsHome : AppCompatActivity() {
     class JobAdapter(
         private val context: Context,
         private val jobArrayList: ArrayList<Int>,
-        function: () -> Unit
+        val listener: () -> Unit
     ) :
         RecyclerView.Adapter<JobAdapter.ViewHolder>() {
 
@@ -87,6 +88,10 @@ class QuickJobsHome : AppCompatActivity() {
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+            holder.itemView.setOnClickListener{
+                listener()
+            }
 
         }
 
