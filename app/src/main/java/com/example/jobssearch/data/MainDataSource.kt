@@ -81,6 +81,12 @@ object MainDataSource {
         return false
     }
 
+    fun signOut() {
+        signedIn = LoginStatus.NOT_LOGGED_IN
+        userProvider = null
+        userSeeker = null
+    }
+
     suspend fun getRecommendedJobs(callback: (List<JobCompanyInfo>) -> Unit) {
         var result = jobDao?.getJobWithCompany() ?: listOf()
         callback(result)
@@ -91,14 +97,25 @@ object MainDataSource {
         callback(result)
     }
 
-    suspend fun insertJob(name: String, companyId: Int) {
-        var j = Job(0, companyId,
-            "something", name, "Lorem Ipsum blala", "$5000")
+    suspend fun addJob(companyId: Int, name: String, salary: String, description: String) {
+        var j = Job(
+            0,
+            companyId,
+            "Full",
+            name,
+            description,
+            salary
+        )
         jobDao?.insertJob(j)
     }
 
     suspend fun getAllProviders(callback: (List<Provider>) -> Unit) {
         var result = providerDao?.getAll() ?: listOf()
+        callback(result)
+    }
+
+    suspend fun getAllServices(callback: (List<Service>) -> Unit) {
+        var result = serviceDao?.getAll() ?: listOf()
         callback(result)
     }
 
@@ -114,6 +131,18 @@ object MainDataSource {
             "You should ideally never see this page. If you see this something is" +
                     "broken",
             "No where"
+        )
+        callback(result)
+    }
+
+    suspend fun getServiceInfo(id: Int, callback: (Service) -> Unit) {
+        var result = serviceDao?.getService(id) ?: Service(
+            0,
+            "testing@email.com",
+            "Test",
+            "Test",
+            "100",
+            "example.com",
         )
         callback(result)
     }

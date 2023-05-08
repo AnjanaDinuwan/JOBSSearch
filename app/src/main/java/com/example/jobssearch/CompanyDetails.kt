@@ -15,6 +15,7 @@ import androidx.core.app.NavUtils
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.jobssearch.data.MainDataSource
 import com.example.jobssearch.data.model.Job
 import com.example.jobssearch.data.model.Provider
@@ -23,6 +24,7 @@ import java.io.File
 
 
 class CompanyDetails : AppCompatActivity() {
+    var swipeRefresh : SwipeRefreshLayout? = null
     var txtCompanyName : TextView? = null
     var txtDescription : TextView? = null
     var txtLocation : TextView? = null
@@ -48,6 +50,8 @@ class CompanyDetails : AppCompatActivity() {
         txtWebsite = findViewById(R.id.txt_website)
         txtEmail = findViewById(R.id.txt_email)
         imgLogo = findViewById(R.id.img_company_logo)
+        swipeRefresh = findViewById<SwipeRefreshLayout>(R.id.swiperefresh)
+
 
         val recyclerView = findViewById<RecyclerView>(R.id.rv_vacancies)
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -55,6 +59,7 @@ class CompanyDetails : AppCompatActivity() {
         recyclerView.adapter = jobAdapter
 
         lifecycleScope.launch {
+            swipeRefresh?.isRefreshing = true
             MainDataSource.getProviderInfo(id) { provider -> companyInfoCallback(provider) }
             MainDataSource.getAllJobsForProvider(id) { jobs -> companyJobsCallback(jobs) }
         }
@@ -63,9 +68,18 @@ class CompanyDetails : AppCompatActivity() {
         val plusBtn2 = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.btn_plus2);
         plusBtn2.setOnClickListener{
             val intent = Intent(this, PublishVacancy::class.java )
+            intent.putExtra("COMPANY_ID", id)
             startActivity(intent)
         }
+
+        swipeRefresh?.setOnRefreshListener {
+            lifecycleScope.launch {
+                MainDataSource.getAllJobsForProvider(id) { jobs -> companyJobsCallback(jobs) }
+            }
+        }
     }
+
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
@@ -104,8 +118,9 @@ class CompanyDetails : AppCompatActivity() {
     }
 
     fun companyJobsCallback(jobs: List<Job>) {
+        swipeRefresh?.isRefreshing = false
         jobAdapter.dataset = jobs
-
+        jobAdapter.notifyDataSetChanged()
     }
 
     class JobAdapter(var dataset: List<Job>) :
@@ -115,7 +130,7 @@ class CompanyDetails : AppCompatActivity() {
             val txtDescription : TextView
             val txtSalary : TextView
             init {
-                txtJobName = view.findViewById<TextView>(R.id.txt_job_name)
+                txtJobName = view.findViewById<TextView>(R.id.edt_job_name)
                 txtDescription = view.findViewById<TextView>(R.id.txt_job_desc)
                 txtSalary = view.findViewById(R.id.txt_salary)
             }

@@ -13,7 +13,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jobssearch.data.MainDataSource
-import com.example.jobssearch.data.model.Job
 import kotlinx.coroutines.launch
 
 
@@ -69,7 +68,7 @@ class JobsSearch : AppCompatActivity() {
             val txtDescription : TextView
             init {
                 txtCompanyName = view.findViewById<TextView>(R.id.txt_company_name)
-                txtJobName = view.findViewById<TextView>(R.id.txt_job_name)
+                txtJobName = view.findViewById<TextView>(R.id.edt_job_name)
                 txtDescription = view.findViewById<TextView>(R.id.txt_job_desc)
             }
 

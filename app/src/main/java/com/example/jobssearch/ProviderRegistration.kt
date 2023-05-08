@@ -45,7 +45,7 @@ class ProviderRegistration : AppCompatActivity() {
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }
 
-        val btnRegister = findViewById<Button>(R.id.btn_register)
+        val btnRegister = findViewById<Button>(R.id.btn_add_job)
         btnRegister.setOnClickListener {
             val name: String = edtName?.text.toString() ?: ""
             if (name == "") {

@@ -32,7 +32,7 @@
 
 
     <TextView
-        android:id="@+id/ServiceProviderNameView"
+        android:id="@+id/txt_name"
         android:layout_width="166dp"
         android:layout_height="30dp"
         android:layout_marginTop="24dp"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_profile" />
 
     <TextView
-        android:id="@+id/ServiceProviderCostView"
+        android:id="@+id/txt_rate"
         android:layout_width="166dp"
         android:layout_height="30dp"
         android:layout_marginTop="24dp"
@@ -55,10 +55,10 @@
         app:layout_constraintEnd_toEndOf="parent"
 
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ServiceProviderNameView" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_name" />
 
     <TextView
-        android:id="@+id/ServiceProviderDetailsView"
+        android:id="@+id/txt_skills"
         android:layout_width="166dp"
         android:layout_height="30dp"
         android:layout_marginTop="24dp"
@@ -68,11 +68,11 @@
         app:layout_constraintEnd_toEndOf="parent"
 
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ServiceProviderCostView" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_rate" />
 
 
     <EditText
-        android:id="@+id/jobProviderEditText"
+        android:id="@+id/edt_hours"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -83,13 +83,14 @@
         android:inputType="textPostalAddress"
         android:padding="10dp"
         android:textColorHint="@color/black"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ServiceProviderDetailsView" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_skills" />
 
     <TextView
-        android:id="@+id/daysTextView2"
+        android:id="@+id/txt_cost"
         android:layout_width="73dp"
         android:layout_height="28dp"
         android:layout_marginTop="72dp"
@@ -98,10 +99,10 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jobProviderEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_hours" />
 
     <Button
-        android:id="@+id/hireButton"
+        android:id="@+id/btn_hire"
         android:layout_width="145dp"
         android:layout_height="40dp"
         android:background="@drawable/button_gradient"
@@ -112,7 +113,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/daysTextView2"
+        app:layout_constraintTop_toBottomOf="@+id/txt_cost"
         app:layout_constraintVertical_bias="0.559" />
 
 
