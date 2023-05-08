@@ -12,6 +12,9 @@
         android:theme="@style/Theme.JOBSSearch"
         tools:targetApi="31">
         <activity
+            android:name=".QuickjobCardLayout"
+            android:exported="false" />
+        <activity
             android:name=".QuickJobHire"
             android:exported="false" />
         <activity

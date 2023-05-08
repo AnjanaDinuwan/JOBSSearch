@@ -81,7 +81,7 @@ class QuickJobsHome : AppCompatActivity() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.quick_jobs_card_layout, parent, false)
+                .inflate(R.layout.activity_quickjob_card_layout, parent, false)
 
             return ViewHolder(view)
         }
