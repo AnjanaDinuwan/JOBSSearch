@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import com.example.jobssearch.MainActivity
 
@@ -14,6 +15,7 @@ import com.example.jobssearch.data.MainDataSource
 import com.example.jobssearch.ProviderRegistration
 import com.example.jobssearch.SeekerRegistration
 import com.example.jobssearch.data.AppDatabase
+import kotlinx.coroutines.launch
 
 class SignIn : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +27,12 @@ class SignIn : AppCompatActivity() {
             applicationContext,
             AppDatabase::class.java, "main.db"
         ).createFromAsset("main_db.db").build())
+
+        if (MainDataSource.signedIn != MainDataSource.LoginStatus.NOT_LOGGED_IN) {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
 
 
         val signInButton = findViewById<Button>(R.id.btn_signin)
@@ -61,20 +69,27 @@ class SignIn : AppCompatActivity() {
         val passwordTextView = findViewById<TextView>(R.id.password)
         val username = usernameTextView.text.toString()
         val password = passwordTextView.text.toString()
+        val context = this
 
-        val result = MainDataSource.validateSignIn(username, password)
+        lifecycleScope.launch {
+            val result = MainDataSource.validateSignIn(username, password)
 
-        if (result) {
-            Toast.makeText(this@SignIn,
-                "Sign in success", Toast.LENGTH_SHORT).show()
-            usernameTextView.text = ""
-            passwordTextView.text = ""
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-        else {
-            Toast.makeText(this@SignIn,
-                "Sign In failed", Toast.LENGTH_SHORT).show()
+            if (result) {
+                Toast.makeText(
+                    context,
+                    "Sign in success", Toast.LENGTH_SHORT
+                ).show()
+                usernameTextView.text = ""
+                passwordTextView.text = ""
+                val intent = Intent(context, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            } else {
+                Toast.makeText(
+                    context,
+                    "Sign In failed", Toast.LENGTH_SHORT
+                ).show()
+            }
         }
 
     }

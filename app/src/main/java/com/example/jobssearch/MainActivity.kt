@@ -12,10 +12,8 @@ import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.Room
-import com.example.jobssearch.data.AppDatabase
 import com.example.jobssearch.data.MainDataSource
-import com.example.jobssearch.data.model.Job
+import com.example.jobssearch.ui.login.SignIn
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -58,9 +56,21 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val userprofile = findViewById<Button>(R.id.btn_profile)
-        userprofile.setOnClickListener {
-            val intent = Intent(this, UserProfile::class.java)
+        val profileBtn = findViewById<Button>(R.id.btn_profile)
+        when (MainDataSource.signedIn) {
+            MainDataSource.LoginStatus.NOT_LOGGED_IN -> profileBtn.text = "Sign In"
+            MainDataSource.LoginStatus.SEEKER -> profileBtn.text = MainDataSource.userSeeker!!.username.substringBefore("@")
+            MainDataSource.LoginStatus.PROVIDER -> profileBtn.text = MainDataSource.userProvider!!.userName.substringBefore("@")
+        }
+        profileBtn.setOnClickListener {
+            var intent: Intent = when (MainDataSource.signedIn) {
+                MainDataSource.LoginStatus.NOT_LOGGED_IN -> Intent(this, SignIn::class.java)
+                MainDataSource.LoginStatus.SEEKER -> Intent(this, UserProfile::class.java)
+                MainDataSource.LoginStatus.PROVIDER -> Intent(this, UserProfile::class.java)
+            }
+            if (MainDataSource.signedIn == MainDataSource.LoginStatus.NOT_LOGGED_IN) {
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
             startActivity(intent)
         }
     }

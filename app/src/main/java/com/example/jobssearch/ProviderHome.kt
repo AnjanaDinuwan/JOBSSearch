@@ -102,6 +102,9 @@ class ProviderHome : AppCompatActivity() {
                         imgLogo.setImageBitmap(logo)
                     }
                 }
+                else {
+                    imgLogo.setImageResource(R.drawable.baseline_apartment_24)
+                }
             }
         }
 

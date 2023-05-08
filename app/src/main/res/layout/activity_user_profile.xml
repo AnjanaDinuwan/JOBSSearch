@@ -9,13 +9,13 @@
 
 
     <EditText
-        android:id="@+id/editTextPhone4"
+        android:id="@+id/edt_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:background="@drawable/rounded_corner_rectangle"
         android:backgroundTint="@color/light_blue_50"
-        android:hint="Contact No"
+        android:hint="Email"
         android:inputType="phone"
         android:padding="10dp"
         android:textColor="@color/light_blue_900"
@@ -23,23 +23,24 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_name" />
 
     <EditText
-        android:id="@+id/editTextPhone2"
+        android:id="@+id/edt_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:background="@drawable/rounded_corner_rectangle"
         android:backgroundTint="@color/light_blue_50"
-        android:hint="Address/Location"
+        android:hint="New password"
+        android:inputType="textPassword"
         android:padding="10dp"
         android:textColor="@color/light_blue_900"
         android:textColorHint="@color/light_blue_900"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone4" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_email" />
 
 
     <LinearLayout
@@ -62,30 +63,28 @@
             android:layout_height="150dp"
             android:src="@drawable/ic_baseline_person_24"
             app:tint="@color/white" />
-
-
     </LinearLayout>
 
 
     <EditText
-        android:id="@+id/editTextPhone"
+        android:id="@+id/edt_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:background="@drawable/rounded_corner_rectangle"
         android:backgroundTint="@color/light_blue_50"
-        android:hint="Name/Company Name"
+        android:hint="Name"
         android:padding="10dp"
         android:textColor="@color/light_blue_900"
         android:textColorHint="@color/light_blue_900"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button8" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_change_photo" />
 
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/btn_update"
         android:layout_width="155dp"
         android:layout_height="56dp"
         android:layout_marginBottom="32dp"
@@ -94,11 +93,10 @@
         android:text="Update Profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/btn_change_photo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingHorizontal="15dp"

@@ -97,7 +97,9 @@ class CompanyDetails : AppCompatActivity() {
             if (imgFile.exists()) {
                 val logo = BitmapFactory.decodeFile(imgFile.absolutePath)
                 imgLogo?.setImageBitmap(logo)
+                imgLogo?.imageTintList = null
             }
+
         }
     }
 
