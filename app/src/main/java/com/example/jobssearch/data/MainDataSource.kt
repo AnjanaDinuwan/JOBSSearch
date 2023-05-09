@@ -237,6 +237,11 @@ object MainDataSource {
         callback(result)
     }
 
+    suspend fun searchSeeker(query: String, callback: (List<Seeker>) -> Unit) {
+        val result = seekerDao?.searchQuery(query) ?: listOf()
+        callback(result)
+    }
+
     suspend fun searchService(query: String, callback: (List<Service>) -> Unit) {
         val result = serviceDao?.searchQuery(query) ?: listOf()
         callback(result)

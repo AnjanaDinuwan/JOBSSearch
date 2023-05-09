@@ -5,15 +5,14 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NavUtils
 import androidx.lifecycle.lifecycleScope
@@ -43,9 +42,30 @@ class SeekerHome : AppCompatActivity() {
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = seekerAdapter
 
+        val edtSearch = findViewById<EditText>(R.id.edt_search)
+
         lifecycleScope.launch {
             MainDataSource.getAllSeekers { result -> seekerCallback(result) }
         }
+
+        edtSearch.addTextChangedListener( object: TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                val query = s.toString()
+                lifecycleScope.launch {
+                    if (query == "") {
+                        MainDataSource.getAllSeekers { result -> seekerCallback(result)}
+                    }
+                    else {
+                        MainDataSource.searchSeeker(query) { result -> seekerCallback(result) }
+                    }
+                }
+            }
+
+        })
     }
 
 

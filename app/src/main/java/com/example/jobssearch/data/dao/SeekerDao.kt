@@ -27,5 +27,9 @@ interface SeekerDao {
     @Query("SELECT * FROM seekers WHERE id = :id")
     suspend fun getSeeker(id: Int): Seeker
 
+    @Query("SELECT * FROM seekers " +
+            "WHERE name LIKE '%' || :search || '%'")
+    suspend fun searchQuery(search: String): List<Seeker>
+
 
 }
