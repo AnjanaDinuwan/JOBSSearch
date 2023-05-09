@@ -20,9 +20,7 @@
             android:name=".AddService"
             android:exported="false"
             android:theme="@style/Theme.JOBSSearch.Purple"/>
-        <activity
-            android:name=".UpdatePosition"
-            android:exported="false" />
+
         <activity
             android:name=".UserProfile"
             android:exported="false" />
